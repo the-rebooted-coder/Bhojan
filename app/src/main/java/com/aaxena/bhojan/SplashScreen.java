@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
         fadeIn.setDuration(1200);
     }
     private void fireSplashScreen() {
-        int splash_screen_time_out = 2800;
+        int splash_screen_time_out = 2000;
         new Handler().postDelayed(() -> {
             Intent i=new Intent(SplashScreen.this,SignUp.class);
             startActivity(i);
