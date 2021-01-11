@@ -16,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         fireSplashScreen();
         TextView appName = findViewById(R.id.title);
-        appName.setText(R.string.app_name);
+        appName.setText(R.string.app_name_extended);
         appName.startAnimation(fadeIn);
         fadeIn.setDuration(1200);
     }
