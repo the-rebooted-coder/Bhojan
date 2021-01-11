@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "69492125615",
+    "project_id": "bhojan-84ea2",
+    "storage_bucket": "bhojan-84ea2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69492125615:android:cbdbd6b3e311243794095a",
+        "android_client_info": {
+          "package_name": "com.aaxena.bhojan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69492125615-9ao7aqn3hmsvg68t2fve37ik0itivrit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu2mOeNfP2FSSASSuWe7EmgipA_DOZxQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69492125615-9ao7aqn3hmsvg68t2fve37ik0itivrit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
