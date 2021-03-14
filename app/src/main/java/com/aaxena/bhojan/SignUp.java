@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -39,6 +40,7 @@ public class SignUp extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "Login";
     private FirebaseAuth mAuth;
+    LottieAnimationView food_load;
     private int RC_SIGN_IN = 1;
 
     @Override
@@ -46,6 +48,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         signInButton = findViewById(R.id.sign_in_button);
+        food_load = findViewById(R.id.food_load);
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -78,6 +81,8 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void signIn() {
+        food_load.setVisibility(View.VISIBLE);
+        food_load.playAnimation();
         signInButton.setVisibility(View.INVISIBLE);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -98,6 +103,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account != null) {
                 String personName = account.getDisplayName();
+                food_load.setVisibility(View.INVISIBLE);
                 Toast.makeText(SignUp.this, "Hello " + personName + " you are in!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(SignUp.this, "Welcome to Bhojan", Toast.LENGTH_LONG).show();
                 //  Intent i=new Intent(SignUp.this,Landing.class);
@@ -109,6 +115,7 @@ public class SignUp extends AppCompatActivity {
             signInButton.setVisibility(View.VISIBLE);
             Toast.makeText(SignUp.this, "Something went wrong", Toast.LENGTH_LONG).show();
             FirebaseGoogleAuth(null);
+            food_load.setVisibility(View.INVISIBLE);
         }
     }
     private void vibrateDevice() {
@@ -130,6 +137,7 @@ public class SignUp extends AppCompatActivity {
                 } else {
                     signInButton.setVisibility(View.VISIBLE);
                     Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
+                    food_load.setVisibility(View.INVISIBLE);
                 }
             }
         });
