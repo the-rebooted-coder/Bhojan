@@ -78,6 +78,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void signIn() {
+        signInButton.setVisibility(View.INVISIBLE);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -105,7 +106,8 @@ public class SignUp extends AppCompatActivity {
             }
             FirebaseGoogleAuth(acc);
         } catch (ApiException e) {
-            Toast.makeText(SignUp.this, "Oops! We ran into some trouble", Toast.LENGTH_LONG).show();
+            signInButton.setVisibility(View.VISIBLE);
+            Toast.makeText(SignUp.this, "Something went wrong", Toast.LENGTH_LONG).show();
             FirebaseGoogleAuth(null);
         }
     }
@@ -126,6 +128,7 @@ public class SignUp extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
                 } else {
+                    signInButton.setVisibility(View.VISIBLE);
                     Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
                 }
             }
