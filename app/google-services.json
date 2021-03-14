@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "69492125615-qhn5fgego3gptlm9afjj1nejeifgo38t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aaxena.bhojan",
+            "certificate_hash": "6e6d8aff539067231120003754ca6dbac49834c2"
+          }
+        },
+        {
           "client_id": "69492125615-9ao7aqn3hmsvg68t2fve37ik0itivrit.apps.googleusercontent.com",
           "client_type": 3
         }
