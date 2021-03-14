@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Bhojan</string>
     <string name="app_name_extended">Bhojan - An App That Feeds!</string>
+    <string name="hey_there">Namaste 🙏</string>
+    <string name="welcome_to_bhojan">Welcome to Bhojan</string>
+    <string name="continue_with_google">Continue with Google</string>
 </resources>

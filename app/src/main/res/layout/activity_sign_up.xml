@@ -8,10 +8,10 @@
     android:background="@drawable/sign_up">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/first_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hey There!"
+        android:text="@string/hey_there"
         android:fontFamily="@font/productsansbold"
         android:textColor="@color/white"
         android:textAlignment="center"
@@ -21,4 +21,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141" />
+
+    <TextView
+        android:id="@+id/first_hello2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsansbold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default"
+        android:elevation="25dp"
+        android:fontFamily="@font/productsans"
+        android:text="@string/continue_with_google"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_hello"
+        app:layout_constraintVertical_bias="0.44" />
 </androidx.constraintlayout.widget.ConstraintLayout>
