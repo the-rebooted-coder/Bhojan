@@ -46,4 +46,11 @@ public class Share extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext()
+                ,Landing.class));
+        overridePendingTransition(0,0);
+    }
 }

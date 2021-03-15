@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,10 +22,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -41,7 +38,7 @@ public class SignUp extends AppCompatActivity {
     private String TAG = "Login";
     private FirebaseAuth mAuth;
     LottieAnimationView food_load;
-    private int RC_SIGN_IN = 1;
+    private final int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,10 +99,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account != null) {
-                String personName = account.getDisplayName();
                 food_load.setVisibility(View.INVISIBLE);
-                Toast.makeText(SignUp.this, "Hello " + personName + " you are in!", Toast.LENGTH_SHORT).show();
-                Toast.makeText(SignUp.this, "Welcome to Bhojan", Toast.LENGTH_LONG).show();
                 Intent i=new Intent(SignUp.this,Landing.class);
                 startActivity(i);
                 finish();
@@ -129,16 +123,13 @@ public class SignUp extends AppCompatActivity {
     }
     private void FirebaseGoogleAuth(GoogleSignInAccount acct) {
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                } else {
-                    signInButton.setVisibility(View.VISIBLE);
-                    Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
-                    food_load.setVisibility(View.INVISIBLE);
-                }
+        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+            } else {
+                signInButton.setVisibility(View.VISIBLE);
+                Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
+                food_load.setVisibility(View.INVISIBLE);
             }
         });
     }

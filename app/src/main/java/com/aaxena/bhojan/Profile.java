@@ -23,27 +23,31 @@ public class Profile extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         // Item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.bhojan:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Landing.class));
-                        overridePendingTransition(0,0);
-                        return true;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.bhojan:
+                    startActivity(new Intent(getApplicationContext()
+                            ,Landing.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
-                    case R.id.share:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Share.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                case R.id.share:
+                    startActivity(new Intent(getApplicationContext()
+                            ,Share.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
-                    case R.id.profile:
-                        return true;
-                }
-                return false;
+                case R.id.profile:
+                    return true;
             }
+            return false;
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext()
+                ,Landing.class));
+        overridePendingTransition(0,0);
     }
 }

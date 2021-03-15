@@ -3,6 +3,7 @@ package com.aaxena.bhojan;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,27 +24,24 @@ public class Landing extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.bhojan);
 
         // Item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.bhojan:
-                        return true;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.bhojan:
+                    return true;
 
-                    case R.id.share:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Share.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                case R.id.share:
+                    startActivity(new Intent(getApplicationContext()
+                            ,Share.class));
+                    overridePendingTransition(0,0);
+                    return true;
 
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Profile.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+                case R.id.profile:
+                    startActivity(new Intent(getApplicationContext()
+                            ,Profile.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
     }
 }
