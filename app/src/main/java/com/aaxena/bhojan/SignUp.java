@@ -106,9 +106,9 @@ public class SignUp extends AppCompatActivity {
                 food_load.setVisibility(View.INVISIBLE);
                 Toast.makeText(SignUp.this, "Hello " + personName + " you are in!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(SignUp.this, "Welcome to Bhojan", Toast.LENGTH_LONG).show();
-                //  Intent i=new Intent(SignUp.this,Landing.class);
-                //  startActivity(i);
-                //  finish();
+                Intent i=new Intent(SignUp.this,Landing.class);
+                startActivity(i);
+                finish();
             }
             FirebaseGoogleAuth(acc);
         } catch (ApiException e) {

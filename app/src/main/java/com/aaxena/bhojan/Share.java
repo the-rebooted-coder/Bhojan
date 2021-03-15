@@ -9,18 +9,18 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Landing extends AppCompatActivity {
+public class Share extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing);
+        setContentView(R.layout.activity_share);
 
         // Initialize
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
         // Set Bhojan Selected
-        bottomNavigationView.setSelectedItemId(R.id.bhojan);
+        bottomNavigationView.setSelectedItemId(R.id.share);
 
         // Item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -28,12 +28,12 @@ public class Landing extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.bhojan:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Landing.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.share:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Share.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.profile:

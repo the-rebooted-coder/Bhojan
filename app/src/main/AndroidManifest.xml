@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bhojan">
-        <activity android:name=".Landing"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".Share" />
+        <activity android:name=".Landing" />
         <activity android:name=".SignUp" />
         <activity android:name=".SplashScreen">
             <intent-filter>
