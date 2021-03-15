@@ -35,13 +35,11 @@ public class SplashScreen extends AppCompatActivity {
         two();
         new Handler().postDelayed(this::vibrateDevice, feelUI);
     }
-
     private void two() {
         int feelUItwo = 760;
         three();
         new Handler().postDelayed(this::vibrateDeviceSecond, feelUItwo);
     }
-
     private void three() {
         int feelUIthree = 790;
         four();
@@ -100,7 +98,6 @@ public class SplashScreen extends AppCompatActivity {
             vibrator.vibrate(28);
         }
     }
-
     private void vibrateDeviceThird() {
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -146,7 +143,6 @@ public class SplashScreen extends AppCompatActivity {
             vibrator.vibrate(44);
         }
     }
-
     private void vibrateDevice() {
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
