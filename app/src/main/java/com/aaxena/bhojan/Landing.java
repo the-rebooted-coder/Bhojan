@@ -2,9 +2,9 @@ package com.aaxena.bhojan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,31 +17,26 @@ public class Landing extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        // Initialize
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        // Set Bhojan Selected
-        bottomNavigationView.setSelectedItemId(R.id.bhojan);
-
-        // Item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.bhojan:
-                    return true;
-
-                case R.id.share:
-                    startActivity(new Intent(getApplicationContext()
-                            ,Share.class));
-                    overridePendingTransition(0,0);
-                    return true;
-
-                case R.id.profile:
-                    startActivity(new Intent(getApplicationContext()
-                            ,Profile.class));
-                    overridePendingTransition(0,0);
-                    return true;
-            }
-            return false;
-        });
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new HomeFragment()).commit();
     }
+
+    private final BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = item -> {
+        Fragment fragment = null;
+        switch (item.getItemId()){
+            case R.id.bhojan:
+                fragment = new HomeFragment();
+                break;
+            case R.id.share:
+                fragment = new ShareFragment();
+                break;
+            case R.id.profile:
+                fragment = new ProfileFragment();
+                break;
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
+        return true;
+    };
 }

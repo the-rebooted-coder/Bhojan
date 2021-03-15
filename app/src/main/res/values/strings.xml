@@ -4,4 +4,6 @@
     <string name="hey_there">Namaste 🙏</string>
     <string name="welcome_to_bhojan">Welcome to Bhojan</string>
     <string name="continue_with_google">Continue with Google</string>
+    <string name="share">Share</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bhojan"
-        android:title="Bhojan"
+        android:title="@string/app_name"
         android:icon="@drawable/bhojan_ico"/>
     <item
         android:id="@+id/share"
-        android:title="Share"
+        android:title="@string/share"
         android:icon="@drawable/share_ico"/>
     <item
         android:id="@+id/profile"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/user_ico"/>
 </menu>
