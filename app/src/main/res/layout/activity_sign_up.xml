@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp"
-    android:background="@drawable/sign_up">
+    android:background="@color/white"
+    tools:context=".SignUp">
 
     <TextView
         android:id="@+id/first_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hey_there"
         android:fontFamily="@font/productsansbold"
-        android:textColor="@color/white"
+        android:text="@string/hey_there"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/productsansbold"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@android:color/darker_gray"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,4 +65,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_hello"
         app:layout_constraintVertical_bias="0.44" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="164dp"
+        android:layout_height="145dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/circle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
