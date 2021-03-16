@@ -14,7 +14,7 @@
         android:fontFamily="@font/productsansbold"
         android:text="@string/hey_there"
         android:textAlignment="center"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/orange_700"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,25 +53,11 @@
         app:lottie_fileName="sign_up.json"
         app:lottie_loop="true" />
 
-    <Button
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_default"
-        android:elevation="25dp"
-        android:fontFamily="@font/productsans"
-        android:text="@string/continue_with_google"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_hello"
-        app:layout_constraintVertical_bias="0.374" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="137dp"
         android:layout_height="132dp"
+        android:contentDescription="@string/a_simple_banana"
         android:elevation="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +71,7 @@
         android:id="@+id/imageView3"
         android:layout_width="128dp"
         android:layout_height="118dp"
+        android:contentDescription="@string/a_simple_lemonslice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -92,4 +79,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.199"
         app:srcCompat="@drawable/ic_lemonslice" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default"
+        android:drawableLeft="@drawable/ic_search"
+        android:fontFamily="@font/productsansbold"
+        android:includeFontPadding="true"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:shadowColor="@color/cardview_dark_background"
+        android:text="@string/continue_with_google"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/design_default_color_error"
+        app:strokeColor="@color/teal_700" />
 </androidx.constraintlayout.widget.ConstraintLayout>

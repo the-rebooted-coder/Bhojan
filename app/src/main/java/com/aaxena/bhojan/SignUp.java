@@ -88,9 +88,16 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+        if (resultCode != RESULT_CANCELED) {
+            if (requestCode == RC_SIGN_IN) {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                handleSignInResult(task);
+            }
+        }
+        else {
+            food_load.setVisibility(View.INVISIBLE);
+            signInButton.setVisibility(View.VISIBLE);
+            Toast.makeText(this,"User Cancelled the Login",Toast.LENGTH_SHORT).show();
         }
     }
 
