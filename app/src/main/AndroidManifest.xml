@@ -3,6 +3,7 @@
     package="com.aaxena.bhojan">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bhojan">
-        <activity android:name=".Landing"></activity>
+        <activity android:name=".Landing"/>
         <activity android:name=".SignUp" />
         <activity android:name=".SplashScreen">
             <intent-filter>

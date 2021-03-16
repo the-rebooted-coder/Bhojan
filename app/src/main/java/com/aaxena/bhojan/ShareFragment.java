@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ShareFragment extends Fragment {
 
@@ -32,10 +33,27 @@ public class ShareFragment extends Fragment {
         desc = v2.findViewById(R.id.descriptionOfFood);
         suggestion = v2.findViewById(R.id.suggestionsToGive);
         share = v2.findViewById(R.id.shareFood);
+        foodDbAdd = FirebaseDatabase.getInstance().getReference().child("Food");
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(),"Test Succcess",Toast.LENGTH_SHORT).show();
+                String food = foodName.getText().toString();
+                String description = desc.getText().toString();
+                String sugs = suggestion.getText().toString();
+                if (food.isEmpty()){
+                    foodName.setError("Food name is required");
+                }
+                else if (description.isEmpty()){
+                    desc.setError("Description is required");
+                }
+                else if (sugs.isEmpty()){
+                    suggestion.setText("");
+                }
+                else {
+                    Food food1 = new Food(food,description,sugs);
+                    foodDbAdd.push().setValue(food1);
+                    Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
