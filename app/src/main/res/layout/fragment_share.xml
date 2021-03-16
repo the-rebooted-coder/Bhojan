@@ -17,7 +17,7 @@
         android:text="@string/share_a_meal" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_text_input"
+        android:id="@+id/name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:elevation="30dp"
@@ -26,10 +26,28 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_edit_text"
+            android:id="@+id/nameOfFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/productsans"
             android:hint="@string/name_of_food" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/desc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:elevation="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="215dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionOfFood"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:fontFamily="@font/productsans"
+            android:hint="@string/key_details" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>
