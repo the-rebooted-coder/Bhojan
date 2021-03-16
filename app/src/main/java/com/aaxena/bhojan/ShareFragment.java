@@ -39,18 +39,18 @@ public class ShareFragment extends Fragment {
             public void onClick(View v) {
                 String food = foodName.getText().toString();
                 String description = desc.getText().toString();
-                String sugs = suggestion.getText().toString();
+                String suggestions = suggestion.getText().toString();
                 if (food.isEmpty()){
                     foodName.setError("Food name is required");
                 }
                 else if (description.isEmpty()){
                     desc.setError("Description is required");
                 }
-                else if (sugs.isEmpty()){
-                    suggestion.setText("");
-                }
+                else if (suggestions.isEmpty()){
+                    suggestion.setError("NA for no suggestions");
+                 }
                 else {
-                    Food food1 = new Food(food,description,sugs);
+                    Food food1 = new Food(food,description,suggestions);
                     foodDbAdd.push().setValue(food1);
                     Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
                 }

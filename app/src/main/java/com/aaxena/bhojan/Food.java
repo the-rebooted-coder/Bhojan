@@ -3,12 +3,12 @@ package com.aaxena.bhojan;
 public class Food {
     String food;
     String description;
-    String sugs;
+    String suggestions;
 
-    public Food(String food, String description, String sugs) {
+    public Food(String food, String description, String suggestions) {
         this.food = food;
         this.description = description;
-        this.sugs = sugs;
+        this.suggestions = suggestions;
     }
 
     public String getFood() {
@@ -19,7 +19,7 @@ public class Food {
         return description;
     }
 
-    public String getSugs() {
-        return sugs;
+    public String getSuggestions() {
+        return suggestions;
     }
 }
