@@ -90,14 +90,14 @@
         android:includeFontPadding="true"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:shadowColor="@color/cardview_dark_background"
+        android:shadowColor="@android:color/darker_gray"
         android:text="@string/continue_with_google"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/design_default_color_error"
+        app:rippleColor="@color/orange_700"
         app:strokeColor="@color/teal_700" />
 </androidx.constraintlayout.widget.ConstraintLayout>
