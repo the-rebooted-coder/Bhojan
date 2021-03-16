@@ -2,13 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:background="@color/white" >
 
     <TextView
+        android:id="@+id/intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:textColor="@color/black"
         android:fontFamily="@font/productsansbold"
-        android:text="@string/share"
-        android:textSize="25sp" />
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/share_a_meal" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:elevation="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_of_food" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </RelativeLayout>
