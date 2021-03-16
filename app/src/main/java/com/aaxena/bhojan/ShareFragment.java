@@ -1,6 +1,11 @@
 package com.aaxena.bhojan;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,22 +46,51 @@ public class ShareFragment extends Fragment {
                 String description = desc.getText().toString();
                 String suggestions = suggestion.getText().toString();
                 if (food.isEmpty()){
+                    final Handler handler = new Handler();
+                    handler.postDelayed(() -> vibrateDevice(), 100);
+                    vibrateDeviceThird();
                     foodName.setError("Food name is required");
                 }
                 else if (description.isEmpty()){
+                    final Handler handler = new Handler();
+                    handler.postDelayed(() -> vibrateDevice(), 100);
+                    vibrateDeviceThird();
                     desc.setError("Description is required");
                 }
                 else if (suggestions.isEmpty()){
+                    final Handler handler = new Handler();
+                    handler.postDelayed(() -> vibrateDevice(), 100);
+                    vibrateDeviceThird();
                     suggestion.setError("NA for no suggestions");
                  }
                 else {
+                    vibrateDevice();
                     Food food1 = new Food(food,description,suggestions);
                     foodDbAdd.push().setValue(food1);
                     Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(() -> vibrateDeviceThird(), 100);
                 }
             }
         });
-
         return v2;
+    }
+    private void vibrateDevice() {
+        Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(32, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            vibrator.vibrate(28);
+        }
+    }
+    private void vibrateDeviceThird() {
+        Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(36, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            vibrator.vibrate(30);
+        }
     }
 }
