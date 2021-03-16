@@ -12,8 +12,5 @@
     <string name="name_of_food">Enter Name of the Food Item</string>
     <string name="key_details">Some Key Details Go Here…</string>
     <string name="suggestions">Any Suggestions for the Food?</string>
-    <array name="choice">
-        <item>Veg</item>
-        <item>Non-Veg</item>
-    </array>
+    <string name="share_food">Share Food</string>
 </resources>
