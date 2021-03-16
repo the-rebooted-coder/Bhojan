@@ -16,55 +16,75 @@
         android:layout_marginTop="50dp"
         android:text="@string/share_a_meal" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
-        android:elevation="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameOfFood"
+        <LinearLayout
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
-            android:hint="@string/name_of_food" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical" >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/desc"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
-        android:elevation="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="215dp"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="110dp"
+                android:elevation="30dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descriptionOfFood"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:fontFamily="@font/productsans"
-            android:hint="@string/key_details" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameOfFood"
+                    android:layout_width="match_parent"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/productsans"
+                    android:hint="@string/name_of_food" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/suggestions"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
-        android:elevation="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="370dp"
-        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/desc"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:elevation="30dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/suggestionsToGive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
-            android:hint="@string/suggestions" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionOfFood"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:fontFamily="@font/productsans"
+                    android:hint="@string/key_details" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/suggestions"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:elevation="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/suggestionsToGive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/productsans"
+                    android:hint="@string/suggestions" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Spinner
+                android:id="@+id/vegOrNon"
+                android:layout_marginTop="30dp"
+                android:elevation="30dp"
+                android:gravity="center"
+                android:entries="@array/choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
