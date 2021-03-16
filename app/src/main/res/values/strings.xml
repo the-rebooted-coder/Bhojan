@@ -10,7 +10,7 @@
     <string name="a_simple_lemonslice">a simple lemonslice</string>
     <string name="share_a_meal">Share-a-Meal 🍲</string>
     <string name="name_of_food">Enter Name of the Food Item</string>
-    <string name="key_details">Some Key Details Go Here…</string>
+    <string name="key_details">Some Key Ingredients Go Here…</string>
     <string name="suggestions">Any Suggestions for the Food?</string>
     <string name="share_food">Share Food</string>
 </resources>
