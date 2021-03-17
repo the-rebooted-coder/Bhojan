@@ -62,70 +62,67 @@ public class ShareFragment extends Fragment {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         foodImage.setOnClickListener(v -> selectImage());
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String food = foodName.getText().toString();
-                String description = desc.getText().toString();
-                String suggestions = suggestion.getText().toString();
-                if (food.isEmpty()){
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDevice(), 100);
-                    vibrateDeviceThird();
-                    foodName.setError("Food name is required");
-                }
-                else if (description.isEmpty()){
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDevice(), 100);
-                    vibrateDeviceThird();
-                    desc.setError("Description is required");
-                }
-                else if (suggestions.isEmpty()){
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDevice(), 100);
-                    vibrateDeviceThird();
-                    suggestion.setError("NA for no suggestions");
-                 }
-                else if (filePath != null){
-                    vibrateDevice();
-                    Food food1 = new Food(food,description,suggestions);
-                    DatabaseReference specimenReference = foodDbAdd.child("Food").push();
-                    food1.setImageUrl("");
-                    specimenReference.setValue(food1);
-                    String key = specimenReference.getKey();
-                    food1.setKey(key);
-                    StorageReference ref
-                            = storageReference
-                            .child(
-                                    "foodImages/"
-                                            +filePath.getLastPathSegment());
-                    ref.putFile(filePath)
-                            .addOnSuccessListener(
-                                    taskSnapshot -> {
-                                        Task<Uri> downloadUrl = ref.getDownloadUrl();
-                                        downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                String imageReference = uri.toString();
-                                                foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
-                                                food1.setImageUrl(imageReference);
-                                            }
-                                        });
-                                    })
-                            .addOnFailureListener(e -> Toast.makeText(getActivity().getApplicationContext(),
-                                            "Image Upload Failed " + e.getMessage(),
-                                            Toast.LENGTH_SHORT)
-                                    .show());
-                    Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDeviceThird(), 100);
-                }
-                else {
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDevice(), 100);
-                    vibrateDeviceThird();
-                    Toast.makeText(getActivity().getApplicationContext(),"Image is required",Toast.LENGTH_SHORT).show();
-                }
+        share.setOnClickListener(v -> {
+            String food = foodName.getText().toString();
+            String description = desc.getText().toString();
+            String suggestions = suggestion.getText().toString();
+            if (food.isEmpty()){
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> vibrateDevice(), 100);
+                vibrateDeviceThird();
+                foodName.setError("Food name is required");
+            }
+            else if (description.isEmpty()){
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> vibrateDevice(), 100);
+                vibrateDeviceThird();
+                desc.setError("Description is required");
+            }
+            else if (suggestions.isEmpty()){
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> vibrateDevice(), 100);
+                vibrateDeviceThird();
+                suggestion.setError("NA for no suggestions");
+             }
+            else if (filePath != null){
+                vibrateDevice();
+                Food food1 = new Food(food,description,suggestions);
+                DatabaseReference specimenReference = foodDbAdd.child("Food").push();
+                food1.setImageUrl("");
+                specimenReference.setValue(food1);
+                String key = specimenReference.getKey();
+                food1.setKey(key);
+                StorageReference ref
+                        = storageReference
+                        .child(
+                                "foodImages/"
+                                        +filePath.getLastPathSegment());
+                ref.putFile(filePath)
+                        .addOnSuccessListener(
+                                taskSnapshot -> {
+                                    Task<Uri> downloadUrl = ref.getDownloadUrl();
+                                    downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            String imageReference = uri.toString();
+                                            foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
+                                            food1.setImageUrl(imageReference);
+                                        }
+                                    });
+                                })
+                        .addOnFailureListener(e -> Toast.makeText(getActivity().getApplicationContext(),
+                                        "Image Upload Failed " + e.getMessage(),
+                                        Toast.LENGTH_SHORT)
+                                .show());
+                Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> vibrateDeviceThird(), 100);
+            }
+            else {
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> vibrateDevice(), 100);
+                vibrateDeviceThird();
+                Toast.makeText(getActivity().getApplicationContext(),"Image is required",Toast.LENGTH_SHORT).show();
             }
         });
         return v2;
