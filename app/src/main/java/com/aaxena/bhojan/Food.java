@@ -4,6 +4,24 @@ public class Food {
     String food;
     String description;
     String suggestions;
+    String key;
+    String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public Food(String food, String description, String suggestions) {
         this.food = food;
