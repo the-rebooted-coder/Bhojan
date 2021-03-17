@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -31,11 +34,15 @@ public class ListAdapter extends ArrayAdapter {
         TextView foodName = listItemView.findViewById(R.id.foodName);
         TextView foodDescription = listItemView.findViewById(R.id.foodDescription);
         TextView foodSuggestions = listItemView.findViewById(R.id.foodSuggestions);
+        ImageView foodImage = listItemView.findViewById(R.id.imageLoader);
         Food food = foodList.get(position);
+        String url = food.getImageUrl();
         foodName.setText(food.getFood());
         foodDescription.setText(food.getDescription());
         foodSuggestions.setText(food.getSuggestions());
-
+        Glide.with(getContext())
+                .load(url)
+                .into(foodImage);
         return listItemView;
     }
 }

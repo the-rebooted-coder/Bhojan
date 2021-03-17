@@ -5,18 +5,24 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <Button
-        android:id="@+id/fetch"
+    <TextView
+        android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="1dp"
-        android:text="Button" />
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/productsansbold"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/orange_500"
+        android:textSize="24sp" />
 
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15.0sp"
         android:padding="5dp">
 
     </ListView>

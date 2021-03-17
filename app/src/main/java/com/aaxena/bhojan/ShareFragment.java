@@ -82,7 +82,7 @@ public class ShareFragment extends Fragment {
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
                 vibrateDeviceThird();
-                suggestion.setError("NA for no suggestions");
+                suggestion.setError("Please provide atleast one line suggestion :)");
              }
             else if (filePath != null){
                 vibrateDevice();
@@ -117,6 +117,8 @@ public class ShareFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDeviceThird(), 100);
+                final Handler handler2 = new Handler();
+                handler2.postDelayed(() -> vibrateDevice(), 300);
             }
             else {
                 final Handler handler = new Handler();
@@ -137,6 +139,10 @@ public class ShareFragment extends Fragment {
                         intent,
                         "Select Image from here..."),
                 PICK_IMAGE_REQUEST);
+        vibrateDeviceThird();
+        Toast.makeText(getContext(),"Pick a yummy image",Toast.LENGTH_SHORT).show();
+        final Handler handler = new Handler();
+        handler.postDelayed(() -> vibrateDevice(), 100);
     }
     @Override
     public void onActivityResult(int requestCode,

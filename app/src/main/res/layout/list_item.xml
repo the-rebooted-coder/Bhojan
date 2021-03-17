@@ -2,55 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/productsansbold"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textColor="@color/orange_500"
-        android:textSize="24sp" />
+        app:cardCornerRadius="14dp"
+        android:elevation="30dp">
 
-    <TextView
-        android:id="@+id/foodName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/productsansbold"
-        android:textSize="18sp"
-        android:text="FoodName Placeholder"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/offwhite"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/foodDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/productsans"
-        android:textSize="18sp"
-        android:text="FoodDesc Placeholder"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/foodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/productsansbold"
+                android:gravity="center"
+                android:text="FoodName Placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/foodSuggestions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/productsans"
-        android:textSize="18sp"
-        android:text="FoodSuggestions Placeholder"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+            <ImageView
+                android:id="@+id/imageLoader"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_cupcake" />
+
+        <TextView
+            android:id="@+id/foodDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignBottom="@+id/imageLoader"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/productsans"
+            android:textSize="18sp"
+            android:text="FoodDesc Placeholder"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/foodSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/productsans"
+            android:textSize="18sp"
+            android:text="FoodSuggestions Placeholder"
+            android:textAlignment="center"
+            android:layout_below="@+id/foodDescription"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
