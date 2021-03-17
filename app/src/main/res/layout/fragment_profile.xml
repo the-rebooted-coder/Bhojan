@@ -1,127 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange_200">
+    android:background="@drawable/profile_bg">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="83dp"
+        android:id="@+id/profile_head"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/productsans"
         android:text="Profile"
-        android:textColor="@color/white"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        android:fontFamily="@font/productsans"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"/>
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/acc_photo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:src="@drawable/ic_banana"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.024" />
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"/>
 
     <TextView
         android:id="@+id/def_name"
-        android:layout_width="72dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/acc_photo"
-        android:layout_marginTop="284dp"
+        android:text="Name:"
         android:fontFamily="@font/productsans"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/def_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.398" />
-
-    <TextView
-        android:id="@+id/def_email"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/def_name"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="56dp"
-        android:fontFamily="@font/productsans"
-        android:text="Email"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/e_email"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588" />
-
-    <TextView
-        android:id="@+id/e_email"
-        android:layout_width="261dp"
-        android:layout_height="26dp"
-        android:layout_below="@+id/def_name"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/productsans"
-        android:text="Bhojan@example.com"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"/>
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/def_name"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/productsans"
-        android:text="Bhojan"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toEndOf="@+id/def_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462" />
-
-    <Button
-        android:id="@+id/sign_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Bhojan"
+        android:fontFamily="@font/productsans"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"/>
+
+    <TextView
+        android:id="@+id/def_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:fontFamily="@font/productsans"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user@bhojan.com"
+        android:fontFamily="@font/productsans"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sign_out"
+        android:layout_width="wrap_content"
+        android:elevation="30dp"
+        android:background="@drawable/button_default"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Sign Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/acc_photo"
-        app:layout_constraintVertical_bias="0.656" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:fontFamily="@font/productsansbold"
+        app:rippleColor="@color/teal_700"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

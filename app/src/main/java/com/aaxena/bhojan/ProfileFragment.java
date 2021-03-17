@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity().getApplicationContext());
         photo = v.findViewById(R.id.acc_photo);
         username = v.findViewById(R.id.name);
-        email = v.findViewById(R.id.e_email);
+        email = v.findViewById(R.id.email);
         signOut = v.findViewById(R.id.sign_out);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
