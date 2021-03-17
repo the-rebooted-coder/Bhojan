@@ -1,12 +1,17 @@
 package com.aaxena.bhojan;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,17 +52,17 @@ public class ProfileFragment extends Fragment {
             String personEmail = account.getEmail();
             email.setText(personEmail);
             Uri photoUrl = account.getPhotoUrl(); Glide.with(this).load(photoUrl).into(photo);
-            /* signOut.setOnClickListener(v -> {
-                Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            signOut.setOnClickListener(view -> {
+                Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
                 v2.vibrate(30);
-                Toast.makeText(this, R.string.sign_out_greeting,Toast.LENGTH_SHORT).show();
-                Toast.makeText(this,"Goodbye "+personName,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Signing Out",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Goodbye"+personName,Toast.LENGTH_SHORT).show();
                 int death_text = 2800;
                 new Handler().postDelayed(() -> {
-                    ((ActivityManager)this.getSystemService(ACTIVITY_SERVICE))
+                    ((ActivityManager)getActivity().getSystemService(Context.ACTIVITY_SERVICE))
                             .clearApplicationUserData();
                 }, death_text);
-            }); */
+            });
         }
         return v;
     }
