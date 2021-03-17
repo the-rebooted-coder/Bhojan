@@ -7,10 +7,6 @@ public class Food {
     String key;
     String imageUrl;
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -39,5 +35,9 @@ public class Food {
 
     public String getSuggestions() {
         return suggestions;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
