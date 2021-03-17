@@ -7,6 +7,10 @@ public class Food {
     String key;
     String imageUrl;
 
+    public Food() {
+
+    }
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
