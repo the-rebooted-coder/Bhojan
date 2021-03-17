@@ -31,37 +31,37 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void one() {
-        int feelUI = 730;
+        int feelUI = 860;
         two();
         new Handler().postDelayed(this::vibrateDevice, feelUI);
     }
     private void two() {
-        int feelUItwo = 760;
+        int feelUItwo = 920;
         three();
         new Handler().postDelayed(this::vibrateDeviceSecond, feelUItwo);
     }
     private void three() {
-        int feelUIthree = 790;
+        int feelUIthree = 980;
         four();
         new Handler().postDelayed(this::vibrateDeviceThird, feelUIthree);
     }
     private void four() {
-        int feelUIfour = 820;
+        int feelUIfour = 1040;
         five();
         new Handler().postDelayed(this::vibrateDeviceFourth, feelUIfour);
     }
     private void five() {
-        int feelUIfive = 850;
+        int feelUIfive = 1100;
         six();
         new Handler().postDelayed(this::vibrateDeviceFifth, feelUIfive);
     }
     private void six() {
-        int feelUIsix = 880;
+        int feelUIsix = 1160;
         seven();
         new Handler().postDelayed(this::vibrateDeviceSixth, feelUIsix);
     }
     private void seven() {
-        int feelUIseven = 910;
+        int feelUIseven = 1220;
         new Handler().postDelayed(this::vibrateDeviceSeventh, feelUIseven);
     }
 
