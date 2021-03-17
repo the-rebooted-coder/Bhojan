@@ -16,12 +16,12 @@
                 android:id="@+id/intro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:fontFamily="@font/productsansbold"
-                android:textSize="24sp"
-                android:textAlignment="center"
                 android:layout_marginTop="50dp"
-                android:text="@string/share_a_meal" />
+                android:fontFamily="@font/productsansbold"
+                android:text="@string/share_a_meal"
+                android:textAlignment="center"
+                android:textColor="@color/orange_500"
+                android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name"
