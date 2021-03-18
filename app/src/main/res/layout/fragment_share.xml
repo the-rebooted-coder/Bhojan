@@ -80,24 +80,18 @@
                 android:src="@drawable/ic_cupcake" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/latTextView"
+                android:id="@+id/disclosure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="30dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/productsans"
-                android:text="Latitude "
-                android:textColor="@color/black" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/lonTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="30dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/productsans"
-                android:text="Longitude"
-                android:textColor="@color/black" />
+                android:text="Your Location will be recorded with your share so that the one who needs food can locate it easily!  "
+                android:textColor="#696969" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/shareFood"
