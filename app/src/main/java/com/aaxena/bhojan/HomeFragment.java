@@ -30,13 +30,13 @@ public class HomeFragment extends Fragment {
         View v3 =  inflater.inflate(R.layout.fragment_home,container,false);
         ListView myListView;
         List<Food> foodList;
-        Toast.makeText(getContext(),"Refreshing Dishes \uD83D\uDE0B",Toast.LENGTH_SHORT).show();
         DatabaseReference foodDbAdd = FirebaseDatabase.getInstance().getReference("Food/Food");
         myListView =  v3.findViewById(R.id.myListView);
         foodList = new ArrayList<>();
         foodDbAdd.addValueEventListener(new ValueEventListener() {
             @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(getContext(),"Refreshing Dishes \uD83D\uDE0B",Toast.LENGTH_SHORT).show();
                 try{
                     foodList.clear();
                     for (DataSnapshot foodDatastamp : snapshot.getChildren()){
