@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment {
                 Vibrator v2 = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
                 v2.vibrate(30);
                 Toast.makeText(getActivity(),"Signing Out",Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(),"Goodbye"+personName,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Have a nice day "+personName,Toast.LENGTH_SHORT).show();
                 int death_text = 2800;
                 new Handler().postDelayed(() -> {
                     ((ActivityManager)getActivity().getSystemService(Context.ACTIVITY_SERVICE))
