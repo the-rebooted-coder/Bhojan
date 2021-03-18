@@ -79,6 +79,26 @@
                 android:contentDescription="@string/image_to_be_uploaded"
                 android:src="@drawable/ic_cupcake" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/latTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="Latitude "
+                android:textColor="@color/black" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lonTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/productsans"
+                android:text="Longitude"
+                android:textColor="@color/black" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/shareFood"
                 android:layout_width="wrap_content"
