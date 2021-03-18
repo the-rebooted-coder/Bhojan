@@ -61,6 +61,8 @@ public class ShareFragment extends Fragment {
     StorageReference storageReference;
     FusedLocationProviderClient mFusedLocationClient;
     Double lon,lat;
+    String longitude;
+    String latitude;
     int PERMISSION_ID = 44;
 
     @Nullable
@@ -81,13 +83,21 @@ public class ShareFragment extends Fragment {
         foodDbAdd = FirebaseDatabase.getInstance().getReference().child("Food");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+
         foodImage.setOnClickListener(v -> selectImage());
         share.setOnClickListener(v -> {
             String food = foodName.getText().toString();
             String description = desc.getText().toString();
             String suggestions = suggestion.getText().toString();
-            String latitude = lat.toString();
-            String longitude = lon.toString();
+            try {
+                latitude = lat.toString();
+                longitude = lon.toString();
+            }
+            catch (NullPointerException nullPointerException)
+            {
+             //
+            }
             if (food.isEmpty()){
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
@@ -107,40 +117,46 @@ public class ShareFragment extends Fragment {
                 suggestion.setError("Please provide atleast one line suggestion :)");
              }
             else if (filePath != null){
-                vibrateDevice();
-                Food food1 = new Food(food,description,suggestions,latitude,longitude);
-                DatabaseReference specimenReference = foodDbAdd.child("Food").push();
-                food1.setImageUrl("");
-                specimenReference.setValue(food1);
-                String key = specimenReference.getKey();
-                food1.setKey(key);
-                StorageReference ref
-                        = storageReference
-                        .child(
-                                "foodImages/"
-                                        +filePath.getLastPathSegment());
-                ref.putFile(filePath)
-                        .addOnSuccessListener(
-                                taskSnapshot -> {
-                                    Task<Uri> downloadUrl = ref.getDownloadUrl();
-                                    downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            String imageReference = uri.toString();
-                                            foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
-                                            food1.setImageUrl(imageReference);
-                                        }
-                                    });
-                                })
-                        .addOnFailureListener(e -> Toast.makeText(getActivity().getApplicationContext(),
-                                        "Image Upload Failed " + e.getMessage(),
-                                        Toast.LENGTH_SHORT)
-                                .show());
-                Toast.makeText(getActivity().getApplicationContext(),"Food Details Shared Successfully!",Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
-                handler.postDelayed(() -> vibrateDeviceThird(), 100);
-                final Handler handler2 = new Handler();
-                handler2.postDelayed(() -> vibrateDevice(), 300);
+                if (checkPermissions()) {
+                    vibrateDevice();
+                    Food food1 = new Food(food, description, suggestions, latitude, longitude);
+                    DatabaseReference specimenReference = foodDbAdd.child("Food").push();
+                    food1.setImageUrl("");
+                    specimenReference.setValue(food1);
+                    String key = specimenReference.getKey();
+                    food1.setKey(key);
+                    StorageReference ref
+                            = storageReference
+                            .child(
+                                    "foodImages/"
+                                            + filePath.getLastPathSegment());
+                    ref.putFile(filePath)
+                            .addOnSuccessListener(
+                                    taskSnapshot -> {
+                                        Task<Uri> downloadUrl = ref.getDownloadUrl();
+                                        downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                String imageReference = uri.toString();
+                                                foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
+                                                food1.setImageUrl(imageReference);
+                                            }
+                                        });
+                                    })
+                            .addOnFailureListener(e -> Toast.makeText(getActivity().getApplicationContext(),
+                                    "Image Upload Failed " + e.getMessage(),
+                                    Toast.LENGTH_SHORT)
+                                    .show());
+                    Toast.makeText(getActivity().getApplicationContext(), "Food Details Shared Successfully!", Toast.LENGTH_SHORT).show();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(() -> vibrateDeviceThird(), 100);
+                    final Handler handler2 = new Handler();
+                    handler2.postDelayed(() -> vibrateDevice(), 300);
+                }
+                else {
+                    vibrateDeviceThird();
+                    Toast.makeText(getContext(),"Unable to fetch location, Cannot share",Toast.LENGTH_SHORT).show();
+                }
             }
             else {
                 final Handler handler = new Handler();
