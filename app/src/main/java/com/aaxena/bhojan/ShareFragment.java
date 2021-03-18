@@ -25,14 +25,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,6 +48,8 @@ public class ShareFragment extends Fragment {
     FirebaseStorage storage;
     StorageReference storageReference;
     FusedLocationProviderClient mFusedLocationClient;
+    MaterialTextView latitudeTextView, longitTextView;
+    int PERMISSION_ID = 44;
 
     @Nullable
     @Override
