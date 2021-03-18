@@ -155,7 +155,7 @@ public class ShareFragment extends Fragment {
                 }
                 else {
                     vibrateDeviceThird();
-                    Toast.makeText(getContext(),"Unable to fetch location, Cannot share",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Unable to fetch location, Cannot share \uD83D\uDE15",Toast.LENGTH_SHORT).show();
                 }
             }
             else {
