@@ -6,9 +6,10 @@ public class Food {
     String suggestions;
     String key;
     String imageUrl;
+    String latitude;
+    String longitude;
 
     public Food() {
-
     }
 
     public void setImageUrl(String imageUrl) {
@@ -23,10 +24,12 @@ public class Food {
         this.key = key;
     }
 
-    public Food(String food, String description, String suggestions) {
+    public Food(String food, String description, String suggestions, String latitude, String longitude) {
         this.food = food;
         this.description = description;
         this.suggestions = suggestions;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getFood() {
@@ -43,5 +46,13 @@ public class Food {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 }

@@ -41,11 +41,11 @@
 
         <TextView
             android:id="@+id/foodDescription"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_alignBottom="@+id/imageLoader"
-            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/productsans"
             android:textSize="18sp"
@@ -55,14 +55,14 @@
 
         <TextView
             android:id="@+id/foodSuggestions"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/productsans"
             android:textSize="18sp"
             android:text="FoodSuggestions Placeholder"
             android:textAlignment="center"
             android:layout_below="@+id/foodDescription"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"/>

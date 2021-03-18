@@ -38,7 +38,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -61,7 +60,6 @@ public class ShareFragment extends Fragment {
     FirebaseStorage storage;
     StorageReference storageReference;
     FusedLocationProviderClient mFusedLocationClient;
-    MaterialTextView latitudeTextView, longitTextView;
     Double lon,lat;
     int PERMISSION_ID = 44;
 
@@ -88,6 +86,8 @@ public class ShareFragment extends Fragment {
             String food = foodName.getText().toString();
             String description = desc.getText().toString();
             String suggestions = suggestion.getText().toString();
+            String latitude = lat.toString();
+            String longitude = lon.toString();
             if (food.isEmpty()){
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
@@ -108,7 +108,7 @@ public class ShareFragment extends Fragment {
              }
             else if (filePath != null){
                 vibrateDevice();
-                Food food1 = new Food(food,description,suggestions);
+                Food food1 = new Food(food,description,suggestions,latitude,longitude);
                 DatabaseReference specimenReference = foodDbAdd.child("Food").push();
                 food1.setImageUrl("");
                 specimenReference.setValue(food1);
@@ -206,8 +206,8 @@ public class ShareFragment extends Fragment {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
-            latitudeTextView.setText("Latitude: " + mLastLocation.getLatitude() + "");
-            longitTextView.setText("Longitude: " + mLastLocation.getLongitude() + "");
+            lon = mLastLocation.getLongitude();
+            lat = mLastLocation.getLatitude();
         }
     };
     // method to check for permissions
