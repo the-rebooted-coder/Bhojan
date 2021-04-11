@@ -24,8 +24,8 @@
         android:text="Bhojan"
         android:layout_marginLeft="200dp"
         android:fontFamily="@font/productsans"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textSize="26sp"
         android:layout_marginTop="100dp"/>
 
     <TextView

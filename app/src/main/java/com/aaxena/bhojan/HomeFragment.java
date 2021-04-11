@@ -175,14 +175,5 @@ public class HomeFragment extends Fragment {
         }
         return have_MobileData||have_WIFI;
     }
-    private void vibrateDevice() {
-        Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(28, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            //deprecated in API 26
-            vibrator.vibrate(25);
-        }
-    }
 }
 

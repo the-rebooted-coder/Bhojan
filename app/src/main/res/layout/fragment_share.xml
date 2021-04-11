@@ -20,7 +20,7 @@
                 android:fontFamily="@font/productsansbold"
                 android:text="@string/share_a_meal"
                 android:textAlignment="center"
-                android:textColor="@color/orange_500"
+                android:textColor="@color/cyan"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout

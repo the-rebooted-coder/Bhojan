@@ -116,7 +116,7 @@ public class SignUp extends AppCompatActivity {
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
             if (account != null) {
                 food_load.setVisibility(View.INVISIBLE);
-                Intent i=new Intent(SignUp.this,Landing.class);
+                Intent i=new Intent(this,Landing.class);
                 startActivity(i);
                 finish();
             }
