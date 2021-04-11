@@ -16,6 +16,12 @@
             android:background="@color/offwhite"
             android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/moreDetails"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="@color/transperent" />
+
         <TextView
                 android:id="@+id/foodName"
                 android:layout_width="match_parent"
