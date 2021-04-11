@@ -33,12 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user@bhojan.com"
-        android:fontFamily="@font/productsans"
+        android:fontFamily="@font/productsansitalic"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"/>
+        android:layout_marginTop="380dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sign_out"
@@ -48,8 +48,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Sign Out"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="550dp"
+        android:layout_below="@+id/email"
         android:fontFamily="@font/productsansbold"
         app:rippleColor="@color/teal_700"/>
 
