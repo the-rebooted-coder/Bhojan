@@ -60,7 +60,7 @@ dependencies {
     //Google Location
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
-
-
+    // Tap Target View
+    implementation 'uk.co.samuelwall:material-tap-target-prompt:3.1.0'
 
 }

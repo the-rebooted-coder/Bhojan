@@ -2,7 +2,9 @@ package com.aaxena.bhojan;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -15,7 +17,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -23,6 +27,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
+
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public class ProfileFragment extends Fragment {
 
@@ -32,10 +38,27 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth mAuth;
     Button signOut;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
         View v =  inflater.inflate(R.layout.fragment_profile,container,false);
+
+        if (isFirstTime()) {
+            //Perform something only once
+            // Tap Target Start
+            new MaterialTapTargetPrompt.Builder(getActivity())
+                    .setTarget(R.id.profile)
+                    .setPrimaryText("Your Profile!")
+                    .setSecondaryText("Keep a Track of your Account from here.")
+                    .setBackButtonDismissEnabled(true)
+                    .setAnimationInterpolator(new FastOutSlowInInterpolator())
+                    .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
+                    .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
+                    .setBackgroundColour(getResources().getColor(R.color.orange_700))
+                    .show();
+            // Tap Target End
+        }
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity().getApplicationContext());
         photo = v.findViewById(R.id.acc_photo);
@@ -65,5 +88,17 @@ public class ProfileFragment extends Fragment {
             });
         }
         return v;
+    }
+    //First Time Run Checker
+    private boolean isFirstTime() {
+        SharedPreferences preferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 }

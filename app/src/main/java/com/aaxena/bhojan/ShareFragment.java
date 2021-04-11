@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
@@ -25,8 +26,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -44,6 +47,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -65,11 +71,30 @@ public class ShareFragment extends Fragment {
     String latitude;
     int PERMISSION_ID = 44;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v2 = inflater.inflate(R.layout.fragment_share, container, false);
+
+        if (isFirstTime()) {
+            //Perform something only once
+            // Tap Target Start
+            new MaterialTapTargetPrompt.Builder(getActivity())
+                    .setTarget(R.id.share)
+                    .setPrimaryText("Share Food!")
+                    .setSecondaryText("You can share your own food from here ;)")
+                    .setBackButtonDismissEnabled(true)
+                    .setAnimationInterpolator(new FastOutSlowInInterpolator())
+                    .setMaxTextWidth(R.dimen.max_prompt_width)
+                    .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
+                    .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
+                    .setBackgroundColour(getResources().getColor(R.color.orange_700))
+                    .show();
+            // Tap Target End
+        }
+
         //Location and geo
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         // method to get the location
@@ -333,5 +358,18 @@ public class ShareFragment extends Fragment {
             //deprecated in API 26
             vibrator.vibrate(30);
         }
+    }
+
+    //First Time Run Checker
+    private boolean isFirstTime() {
+        SharedPreferences preferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 }
