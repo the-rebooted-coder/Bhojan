@@ -14,7 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.pedromassango.doubleclick.DoubleClick;
+import com.pedromassango.doubleclick.DoubleClickListener;
 
 import java.util.List;
 
@@ -46,12 +47,17 @@ public class ListAdapter extends ArrayAdapter {
         foodName.setText(food.getFood());
         foodDescription.setText(food.getDescription());
         foodSuggestions.setText(food.getSuggestions());
-        moreDetails.setOnClickListener(new View.OnClickListener() {
+        moreDetails.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),""+lat+lon,Toast.LENGTH_SHORT).show();
+            public void onSingleClick(View view) {
+                Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
             }
-        });
+
+            @Override
+            public void onDoubleClick(View view) {
+
+            }
+        }));
         Glide.with(getContext())
                 .load(url)
                 .override(400,500)
