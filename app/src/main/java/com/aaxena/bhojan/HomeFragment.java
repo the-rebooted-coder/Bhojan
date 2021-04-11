@@ -53,6 +53,7 @@ public class HomeFragment extends Fragment {
                     myListView.setAdapter(adapter);
                 }
                 catch (Exception e){
+                    //DO NOT REMOVE THIS EMPTY CATCH
                 }
             }
             @Override
