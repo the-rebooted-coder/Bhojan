@@ -6,60 +6,27 @@
     android:layout_height="match_parent"
     android:background="@drawable/profile_bg">
 
-    <TextView
-        android:id="@+id/profile_head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textSize="25sp"
-        android:fontFamily="@font/productsans"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/acc_photo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="35dp"
         android:layout_marginTop="60dp"
         android:src="@drawable/ic_banana"
         app:civ_border_color="@color/white"
         app:civ_border_width="2dp"/>
 
     <TextView
-        android:id="@+id/def_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        android:fontFamily="@font/productsans"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"/>
-
-    <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bhojan"
+        android:layout_marginLeft="200dp"
         android:fontFamily="@font/productsans"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"/>
-
-    <TextView
-        android:id="@+id/def_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:"
-        android:fontFamily="@font/productsans"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"/>
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="100dp"/>
 
     <TextView
         android:id="@+id/email"
@@ -68,10 +35,10 @@
         android:text="user@bhojan.com"
         android:fontFamily="@font/productsans"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="400dp"/>
+        android:layout_marginTop="450dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sign_out"
@@ -82,29 +49,8 @@
         android:gravity="center"
         android:text="Sign Out"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="510dp"
+        android:layout_marginTop="550dp"
         android:fontFamily="@font/productsansbold"
         app:rippleColor="@color/teal_700"/>
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="40dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-12dp"
-        android:layout_marginLeft="130dp"
-        app:srcCompat="@drawable/ic_shine" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="450dp"
-        android:layout_marginRight="-80dp"
-        app:srcCompat="@drawable/ic_lines" />
 
 </RelativeLayout>
