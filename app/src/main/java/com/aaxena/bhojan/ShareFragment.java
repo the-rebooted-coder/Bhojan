@@ -176,22 +176,19 @@ public class ShareFragment extends Fragment {
                 // location from
                 // FusedLocationClient
                 // object
-                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        Location location = task.getResult();
-                        if (location == null) {
-                            requestNewLocationData();
-                        } else {
-                            lon = location.getLongitude();
-                            lat = location.getLatitude();
-                          //  latitudeTextView.setText(location.getLatitude() + "");
-                          //  longitTextView.setText(location.getLongitude() + "");
-                        }
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(task -> {
+                    Location location = task.getResult();
+                    if (location == null) {
+                        requestNewLocationData();
+                    } else {
+                        lon = location.getLongitude();
+                        lat = location.getLatitude();
+                      //  latitudeTextView.setText(location.getLatitude() + "");
+                      //  longitTextView.setText(location.getLongitude() + "");
                     }
                 });
             } else {
-                Toast.makeText(getContext(), "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Please turn on your location...", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
             }
