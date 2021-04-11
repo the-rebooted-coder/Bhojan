@@ -2,6 +2,8 @@ package com.aaxena.bhojan;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -88,16 +90,23 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_CANCELED) {
-            if (requestCode == RC_SIGN_IN) {
-                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                handleSignInResult(task);
+        if (haveNetwork()){
+            if (resultCode != RESULT_CANCELED) {
+                if (requestCode == RC_SIGN_IN) {
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                    handleSignInResult(task);
+                }
+            }
+            else {
+                food_load.setVisibility(View.INVISIBLE);
+                signInButton.setVisibility(View.VISIBLE);
+                Toast.makeText(this,"User Cancelled the Login",Toast.LENGTH_SHORT).show();
             }
         }
         else {
+            Toast.makeText(this,"No internet connection",Toast.LENGTH_SHORT).show();
             food_load.setVisibility(View.INVISIBLE);
             signInButton.setVisibility(View.VISIBLE);
-            Toast.makeText(this,"User Cancelled the Login",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -139,5 +148,22 @@ public class SignUp extends AppCompatActivity {
                 food_load.setVisibility(View.INVISIBLE);
             }
         });
+    }
+    //Network Checking Boolean
+    private boolean haveNetwork() {
+        boolean have_WIFI = false;
+        boolean have_MobileData = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+        for (NetworkInfo info : networkInfos) {
+            if (info.getTypeName().equalsIgnoreCase("WIFI"))
+                if (info.isConnected())
+                    have_WIFI = true;
+            if (info.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (info.isConnected())
+                    have_MobileData = true;
+        }
+        return have_MobileData||have_WIFI;
     }
 }

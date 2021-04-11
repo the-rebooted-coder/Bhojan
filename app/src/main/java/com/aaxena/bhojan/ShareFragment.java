@@ -29,14 +29,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -47,9 +45,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
-
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -77,23 +72,6 @@ public class ShareFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v2 = inflater.inflate(R.layout.fragment_share, container, false);
-
-        if (isFirstTime()) {
-            //Perform something only once
-            // Tap Target Start
-            new MaterialTapTargetPrompt.Builder(getActivity())
-                    .setTarget(R.id.share)
-                    .setPrimaryText("Share Food!")
-                    .setSecondaryText("You can share your own food from here ;)")
-                    .setBackButtonDismissEnabled(true)
-                    .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                    .setMaxTextWidth(R.dimen.max_prompt_width)
-                    .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                    .show();
-            // Tap Target End
-        }
 
         //Location and geo
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());

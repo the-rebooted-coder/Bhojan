@@ -32,7 +32,7 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="26sp" />
 
         <ImageView
                 android:id="@+id/imageLoader"
@@ -52,7 +52,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/productsans"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textAlignment="center"
             android:textColor="@color/black"/>
 
@@ -60,7 +60,7 @@
             android:id="@+id/foodSuggestions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
+            android:fontFamily="@font/productsansitalic"
             android:textSize="18sp"
             android:textAlignment="center"
             android:layout_below="@+id/foodDescription"

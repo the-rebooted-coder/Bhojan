@@ -1,6 +1,13 @@
 package com.aaxena.bhojan;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,12 +57,27 @@ public class ListAdapter extends ArrayAdapter {
         moreDetails.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
+                vibrateDeviceSecond();
+               Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDoubleClick(View view) {
-
+                vibrateDeviceSecond();
+                int splash_screen_time_out = 360;
+                new Handler().postDelayed(() -> {
+                    vibrateDevice();
+                }, splash_screen_time_out);
+                Toast.makeText(getContext(),"Viewing "+food.getFood()+" on map! \uD83D\uDCCC",Toast.LENGTH_SHORT).show();
+                String showPin = "https://www.google.com/maps/search/?api=1&query="+lat+","+lon;
+                try {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse(showPin));
+                    getContext().startActivity(intent);
+                }
+                catch (Exception e){
+                    //Something out of the blues happened!
+                }
             }
         }));
         Glide.with(getContext())
@@ -64,5 +86,23 @@ public class ListAdapter extends ArrayAdapter {
                 .fitCenter()
                 .into(foodImage);
         return listItemView;
+    }
+    private void vibrateDeviceSecond() {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(32, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            vibrator.vibrate(28);
+        }
+    }
+    private void vibrateDevice() {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            vibrator.vibrate(27);
+        }
     }
 }

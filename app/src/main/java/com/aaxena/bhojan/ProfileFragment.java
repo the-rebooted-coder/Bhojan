@@ -44,22 +44,6 @@ public class ProfileFragment extends Fragment {
         super.onCreateView(inflater,container,savedInstanceState);
         View v =  inflater.inflate(R.layout.fragment_profile,container,false);
 
-        if (isFirstTime()) {
-            //Perform something only once
-            // Tap Target Start
-            new MaterialTapTargetPrompt.Builder(getActivity())
-                    .setTarget(R.id.profile)
-                    .setPrimaryText("Your Profile!")
-                    .setSecondaryText("Keep a Track of your Account from here.")
-                    .setBackButtonDismissEnabled(true)
-                    .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                    .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                    .show();
-            // Tap Target End
-        }
-
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity().getApplicationContext());
         photo = v.findViewById(R.id.acc_photo);
         username = v.findViewById(R.id.name);
