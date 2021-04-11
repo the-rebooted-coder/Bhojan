@@ -39,19 +39,30 @@ public class HomeFragment extends Fragment {
         View v3 =  inflater.inflate(R.layout.fragment_home,container,false);
 
         if (isFirstTime()) {
-            //Perform something only once
             // Tap Target Start
-            new MaterialTapTargetPrompt.Builder(getActivity())
-                    .setTarget(R.id.bhojan)
-                    .setPrimaryText("Grab the Shared Food!")
-                    .setSecondaryText("Food shared by everyone will appear here.")
-                    .setBackButtonDismissEnabled(true)
-                    .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                    .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                    .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                    .show();
-            // Tap Target End
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                new MaterialTapTargetPrompt.Builder(getActivity())
+                        .setTarget(R.id.bhojan)
+                        .setPrimaryText("Grab the Shared Food!")
+                        .setSecondaryText("Food shared by everyone will appear here.")
+                        .setBackButtonDismissEnabled(true)
+                        .setAnimationInterpolator(new FastOutSlowInInterpolator())
+                        .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
+                        .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
+                        .setBackgroundColour(getResources().getColor(R.color.orange_700))
+                        .show();
+                // Tap Target End
+            }
+            else{
+                new MaterialTapTargetPrompt.Builder(getActivity())
+                        .setTarget(R.id.bhojan)
+                        .setPrimaryText("Grab the Shared Food!")
+                        .setSecondaryText("Food shared by everyone will appear here.")
+                        .setBackButtonDismissEnabled(true)
+                        .setAnimationInterpolator(new FastOutSlowInInterpolator())
+                        .setBackgroundColour(getResources().getColor(R.color.orange_700))
+                        .show();
+            }
         }
 
         Toast.makeText(getContext(),"Refreshing Dishes \uD83D\uDE0B",Toast.LENGTH_SHORT).show();
