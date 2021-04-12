@@ -2,4 +2,11 @@
 <resources>
     <dimen name="max_prompt_width">300dp</dimen>
     <dimen name="prompt_focal">600dp</dimen>
+    <dimen name="menu_btn_height">0.1025</dimen>
+    <dimen name="menu_btn_width">0.5</dimen>
+    <dimen name="menu_b_text_size">32sp</dimen>
+    <dimen name="menu_title_width">450dp</dimen>
+    <dimen name="menu_title_height">276dp</dimen>
+    <dimen name="Zero_dp">0dp</dimen>
+    <dimen name="fly_side_margin">420dp</dimen>
 </resources>

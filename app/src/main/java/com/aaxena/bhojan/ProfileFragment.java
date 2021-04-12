@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.avaris.flyfood.Menu;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -58,6 +59,14 @@ public class ProfileFragment extends Fragment {
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
         FirebaseUser mUser = mAuth.getCurrentUser();
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Bhojan, App developed by One Silicon Diode ;)",Toast.LENGTH_SHORT).show();
+                Intent toEaster = new Intent(getActivity(), Menu.class);
+                startActivity(toEaster);
+            }
+        });
 
         if (account !=null){
             String personName = account.getDisplayName();

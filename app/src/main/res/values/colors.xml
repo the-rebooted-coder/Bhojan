@@ -11,5 +11,6 @@
     <color name="offwhite">#FFF1D9</color>
     <color name="cyan">#43d0b4</color>
     <color name="transperent">#00FFFFFF</color>
+    <color name="White">#FFFFFF</color>
     <color name="blues">#91D1F1</color>
 </resources>
