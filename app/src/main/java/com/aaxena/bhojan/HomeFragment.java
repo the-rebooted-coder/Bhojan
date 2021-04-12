@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +31,7 @@ import java.util.List;
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
 public class HomeFragment extends Fragment {
+    LottieAnimationView lottieAnimationView, lottieAnimationView2;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -36,8 +39,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
         View v3 =  inflater.inflate(R.layout.fragment_home,container,false);
+        lottieAnimationView = v3.findViewById(R.id.animation_view_here);
+        lottieAnimationView2 = v3.findViewById(R.id.animation_view_here2);
         if (haveNetwork()) {
-            Toast.makeText(getContext(), "Refreshing Dishes \uD83D\uDE0B", Toast.LENGTH_SHORT).show();
             ListView myListView;
             List<Food> foodList;
             DatabaseReference foodDbAdd = FirebaseDatabase.getInstance().getReference("Food/Food");
@@ -46,6 +50,8 @@ public class HomeFragment extends Fragment {
             foodDbAdd.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    lottieAnimationView.setVisibility(View.GONE);
+                    lottieAnimationView2.setVisibility(View.GONE);
                     try {
                         foodList.clear();
                         for (DataSnapshot foodDatastamp : snapshot.getChildren()) {
@@ -73,19 +79,6 @@ public class HomeFragment extends Fragment {
             return v;
         }
         return v3;
-    }
-
-    //First Time Run Checker
-    private boolean isFirstTime() {
-        SharedPreferences preferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
-            // first time
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("RanBefore", true);
-            editor.commit();
-        }
-        return !ranBefore;
     }
     //Network Checking Boolean
     private boolean haveNetwork() {
