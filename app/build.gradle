@@ -102,5 +102,9 @@ dependencies {
     //Double Click Listener
     implementation 'com.github.pedromassango:doubleClick:3.0'
 
+    //Bottom Animated NavBar
+    implementation 'nl.joery.animatedbottombar:library:1.0.9'
+
+
 
 }
