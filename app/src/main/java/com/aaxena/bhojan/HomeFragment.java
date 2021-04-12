@@ -1,15 +1,11 @@
 package com.aaxena.bhojan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
@@ -45,69 +37,6 @@ public class HomeFragment extends Fragment {
         super.onCreateView(inflater,container,savedInstanceState);
         View v3 =  inflater.inflate(R.layout.fragment_home,container,false);
         if (haveNetwork()) {
-            if (isFirstTime()) {
-                // Tap Target Start
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.bhojan)
-                            .setPrimaryText("Grab the Shared Food!")
-                            .setSecondaryText("Food shared by everyone will appear here.")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.profile)
-                            .setPrimaryText("Your Profile!")
-                            .setSecondaryText("Keep a Track of your Account from here.")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.share)
-                            .setPrimaryText("Share Food!")
-                            .setSecondaryText("You can share your own food from here, your location will be required for food shares so others could locate it easily")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setMaxTextWidth(R.dimen.max_prompt_width)
-                            .setPrimaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setSecondaryTextTypeface(getResources().getFont(R.font.productsans))
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                    // Tap Target End
-                } else {
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.bhojan)
-                            .setPrimaryText("Grab the Shared Food!")
-                            .setSecondaryText("Food shared by everyone will appear here.")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.profile)
-                            .setPrimaryText("Your Profile!")
-                            .setSecondaryText("Keep a Track of your Account from here.")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                    new MaterialTapTargetPrompt.Builder(getActivity())
-                            .setTarget(R.id.share)
-                            .setPrimaryText("Share Food!")
-                            .setSecondaryText("You can share your own food from here, your location will be required for food shares so others could locate it easily")
-                            .setBackButtonDismissEnabled(false)
-                            .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                            .setMaxTextWidth(R.dimen.max_prompt_width)
-                            .setBackgroundColour(getResources().getColor(R.color.orange_700))
-                            .show();
-                }
-            }
             Toast.makeText(getContext(), "Refreshing Dishes \uD83D\uDE0B", Toast.LENGTH_SHORT).show();
             ListView myListView;
             List<Food> foodList;
