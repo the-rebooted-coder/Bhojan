@@ -59,14 +59,25 @@ public class ProfileFragment extends Fragment {
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
         FirebaseUser mUser = mAuth.getCurrentUser();
-        photo.setOnClickListener(new View.OnClickListener() {
+        photo.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onSingleClick(View view) {
+                vibrateDevice();
+                Toast.makeText(getActivity(),"Maybe Tapping Twice Might Help! \uD83E\uDD37",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDoubleClick(View view) {
+                vibrateDevice();
+                int splash_screen_time_out = 360;
+                new Handler().postDelayed(() -> {
+                   vibrateDeviceSecond();
+                }, splash_screen_time_out);
                 Toast.makeText(getActivity(),"Bhojan, App developed by One Silicon Diode ;)",Toast.LENGTH_SHORT).show();
                 Intent toEaster = new Intent(getActivity(), Menu.class);
                 startActivity(toEaster);
             }
-        });
+        }));
 
         if (account !=null){
             String personName = account.getDisplayName();
@@ -94,6 +105,15 @@ public class ProfileFragment extends Fragment {
             }));
         }
         return v;
+    }
+    private void vibrateDeviceSecond() {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(32, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            vibrator.vibrate(28);
+        }
     }
     private void vibrateDevice() {
         Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
