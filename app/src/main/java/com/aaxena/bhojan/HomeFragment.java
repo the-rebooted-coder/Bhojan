@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     LottieAnimationView lottieAnimationView, lottieAnimationView2;
@@ -41,6 +42,10 @@ public class HomeFragment extends Fragment {
         View v3 =  inflater.inflate(R.layout.fragment_home,container,false);
         lottieAnimationView = v3.findViewById(R.id.animation_view_here);
         lottieAnimationView2 = v3.findViewById(R.id.animation_view_here2);
+        if (isFirstTime()) {
+            //Perform something only once
+            Toast.makeText(getActivity(),"Tip: Tap cards to view on Map \uD83D\uDCA1",Toast.LENGTH_LONG).show();
+        }
         if (haveNetwork()) {
             ListView myListView;
             List<Food> foodList;
@@ -73,6 +78,7 @@ public class HomeFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
+
         }
         else {
             View v =  inflater.inflate(R.layout.activity_no_internet,container,false);
@@ -96,6 +102,17 @@ public class HomeFragment extends Fragment {
                     have_MobileData = true;
         }
         return have_MobileData||have_WIFI;
+    }
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 }
 

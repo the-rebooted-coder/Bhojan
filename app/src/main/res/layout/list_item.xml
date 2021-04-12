@@ -66,8 +66,27 @@
             android:layout_below="@+id/foodDescription"
             android:layout_centerInParent="true"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
             android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/productsans"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/foodSuggestions"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                />
+
 
         </RelativeLayout>
 

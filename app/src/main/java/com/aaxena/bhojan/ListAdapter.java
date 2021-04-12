@@ -3,6 +3,8 @@ package com.aaxena.bhojan;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -24,7 +26,9 @@ import com.bumptech.glide.Glide;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class ListAdapter extends ArrayAdapter {
     private final Activity mContext;
@@ -47,17 +51,35 @@ public class ListAdapter extends ArrayAdapter {
         TextView foodDescription = listItemView.findViewById(R.id.foodDescription);
         TextView foodSuggestions = listItemView.findViewById(R.id.foodSuggestions);
         ImageView foodImage = listItemView.findViewById(R.id.imageLoader);
+        TextView scrollingText = listItemView.findViewById(R.id.address);
         Food food = foodList.get(position);
         String url = food.getImageUrl();
         String lat = food.getLatitude();
         String lon = food.getLongitude();
+        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
         foodName.setText(food.getFood());
         foodDescription.setText(food.getDescription());
+        double latitude = Double.parseDouble(lat);
+        double longitude = Double.parseDouble(lon);
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            String cityName = addresses.get(0).getAddressLine(0);
+            String stateName = addresses.get(0).getAddressLine(1);
+            try{
+                    scrollingText.setText(cityName+stateName);
+                    scrollingText.setSelected(true);
+            }
+            catch (Exception e){
+                //Couldn't fetch location
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         foodSuggestions.setText(food.getSuggestions());
         moreDetails.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                vibrateDeviceSecond();
+               vibrateDeviceSecond();
                Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
             }
 
