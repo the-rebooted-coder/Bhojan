@@ -102,6 +102,9 @@ dependencies {
     //Bottom Animated NavBar
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
 
+    //Fading Text View
+    implementation 'com.tomer:fadingtextview:2.6'
+
 
 
 }

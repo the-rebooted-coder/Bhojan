@@ -31,10 +31,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignUp extends AppCompatActivity {
-    TextView fader;
-    private TextView afterfade;
-    protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
-    protected AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
     private Button signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "Login";
@@ -61,22 +57,6 @@ public class SignUp extends AppCompatActivity {
             vibrateDevice();
             signIn();
         });
-
-        //Fades the Text View Dynamically
-        fader = findViewById(R.id.first_hello);
-        fader.startAnimation(fadeIn);
-        fader.startAnimation(fadeOut);
-        fadeIn.setDuration(600);
-        fadeIn.setFillAfter(true);
-        fadeOut.setDuration(600);
-        fadeOut.setFillAfter(true);
-        fadeOut.setStartOffset(1200 + fadeIn.getStartOffset());
-        afterfade = findViewById(R.id.first_hello2);
-        int welcome_fade = 2000;
-        new Handler().postDelayed(() -> {
-            afterfade.startAnimation(fadeIn);
-            afterfade.setText(R.string.welcome_to_bhojan);
-        }, welcome_fade);
     }
 
     private void signIn() {
