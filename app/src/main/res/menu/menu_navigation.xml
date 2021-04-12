@@ -10,6 +10,6 @@
         android:icon="@drawable/arrow_ico"/>
     <item
         android:id="@+id/profile"
-        android:title="@string/profile"
-        android:icon="@drawable/user_ico"/>
+        android:title="@string/more"
+        android:icon="@drawable/ic_baseline_more_horiz_24"/>
 </menu>

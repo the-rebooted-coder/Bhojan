@@ -20,7 +20,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:abb_selectedTabType="icon"
+        app:abb_selectedTabType="text"
         app:abb_indicatorLocation="bottom"
         app:abb_rippleEnabled="true"
         app:abb_indicatorAppearance="round"

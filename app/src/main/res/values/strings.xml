@@ -5,7 +5,7 @@
     <string name="welcome_to_bhojan">Welcome to\nBhojan!</string>
     <string name="continue_with_google">  Continue with Google</string>
     <string name="share">Share</string>
-    <string name="profile">Profile</string>
+    <string name="more">More</string>
     <string name="a_simple_banana">a simple banana</string>
     <string name="a_simple_lemonslice">a simple lemonslice</string>
     <string name="share_a_meal">Share-a-Meal 🍲</string>
@@ -15,6 +15,8 @@
     <string name="share_food">Share Food</string>
     <string name="image_to_be_uploaded">Image to be uploaded</string>
     <string name="tips">Hmm…there is no internet right now, but food might be\nDo share it if excess!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="about_developers">About Developers</string>
     <string-array name="greetings">
         <item>Hello</item>
         <item>नमस्ते</item>

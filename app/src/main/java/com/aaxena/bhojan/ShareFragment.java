@@ -29,7 +29,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -166,7 +165,7 @@ public class ShareFragment extends Fragment {
                 }
                 else {
                     vibrateDeviceThird();
-                    Toast.makeText(getContext(),"Unable to fetch location, Cannot share \uD83D\uDE15",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Unable to fetch location, Open App Settings and enable 'Location Permissions' \uD83D\uDE15",Toast.LENGTH_LONG).show();
                 }
             }
             else {
