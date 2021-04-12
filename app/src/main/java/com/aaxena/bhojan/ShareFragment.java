@@ -22,12 +22,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -102,18 +104,24 @@ public class ShareFragment extends Fragment {
              //
             }
             if (food.isEmpty()){
+                ScrollView nestedScrollView = v2.findViewById(R.id.scrollViewHere);
+                nestedScrollView.fullScroll(View.FOCUS_UP);
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
                 vibrateDeviceThird();
                 foodName.setError("Food name is required");
             }
             else if (description.isEmpty()){
+                ScrollView nestedScrollView = v2.findViewById(R.id.scrollViewHere);
+                nestedScrollView.fullScroll(View.FOCUS_UP);
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
                 vibrateDeviceThird();
                 desc.setError("Description is required");
             }
             else if (suggestions.isEmpty()){
+                ScrollView nestedScrollView = v2.findViewById(R.id.scrollViewHere);
+                nestedScrollView.fullScroll(View.FOCUS_UP);
                 final Handler handler = new Handler();
                 handler.postDelayed(() -> vibrateDevice(), 100);
                 vibrateDeviceThird();
