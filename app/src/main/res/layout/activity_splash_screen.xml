@@ -14,8 +14,8 @@
         android:fontFamily="@font/productsansbold"
         android:text="@string/app_name_extended"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textColor="@color/ic_launcher_background"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
-        android:layout_width="334dp"
-        android:layout_height="398dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:elevation="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
