@@ -8,6 +8,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/devMore"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@color/transperent"
+            android:onClick="Clicked" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="350dp"

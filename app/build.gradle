@@ -112,4 +112,7 @@ dependencies {
     //Percent Layout
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
+    //Custom Tab
+    implementation 'androidx.browser:browser:1.2.0'
+
 }
