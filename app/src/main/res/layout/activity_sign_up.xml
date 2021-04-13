@@ -7,6 +7,18 @@
     android:background="@drawable/sign_up"
     tools:context=".SignUp">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_theme"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:visibility="invisible"
+        android:elevation="30dp"
+        app:lottie_autoPlay="false"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        app:lottie_fileName="light_mode.json"
+        app:lottie_loop="false" />
+
     <com.tomer.fadingtextview.FadingTextView
         android:id="@+id/first_hello"
         android:layout_width="wrap_content"
@@ -19,6 +31,20 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/themeChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sign_in_button"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="210dp"
+        android:background="@color/transperent"
+        android:text="Theme"
+        android:textColor="@color/black"
+        android:fontFamily="@font/productsansbold"
+        android:textSize="16sp"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/food_load"

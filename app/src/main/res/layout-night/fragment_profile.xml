@@ -16,6 +16,20 @@
         app:civ_border_color="@color/white"
         app:civ_border_width="2dp"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/themeFromProfile"
+        android:layout_width="wrap_content"
+        android:background="@color/transperent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/orange_700"
+        android:text="Theme"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/abtDevs"
+        android:fontFamily="@font/productsansbold"
+        app:rippleColor="@color/teal_700"/>
+
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -46,7 +60,7 @@
         android:gravity="center"
         android:textColor="@color/orange_700"
         android:text="@string/about_developers"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/email"
         android:fontFamily="@font/productsansbold" />
@@ -59,9 +73,9 @@
         android:gravity="center"
         android:textColor="@color/orange_200"
         android:text="@string/sign_out"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/abtDevs"
+        android:layout_below="@+id/themeFromProfile"
         android:fontFamily="@font/productsansbold"
         app:rippleColor="@color/teal_700"/>
 

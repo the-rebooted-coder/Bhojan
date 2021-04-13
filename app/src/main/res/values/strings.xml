@@ -50,4 +50,7 @@
     <string name="fullTime">90</string>
     <string name="TimerTitle">Time:</string>
     <string name="about_developers">About Developers</string>
+    <string name="system">System</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
 </resources>

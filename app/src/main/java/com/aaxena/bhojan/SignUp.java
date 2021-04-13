@@ -1,7 +1,9 @@
 package com.aaxena.bhojan;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -16,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,6 +33,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.tomer.fadingtextview.FadingTextView;
 
 public class SignUp extends AppCompatActivity {
     private Button signInButton;
@@ -36,7 +41,10 @@ public class SignUp extends AppCompatActivity {
     private String TAG = "Login";
     private FirebaseAuth mAuth;
     LottieAnimationView food_load;
+    AlertDialog alertDialog1;
     private final int RC_SIGN_IN = 1;
+    CharSequence[] values = {" Light "," Dark "," System Default "};
+    Button themeChooser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +57,106 @@ public class SignUp extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton.setOnClickListener(v -> {
-            Vibrator v2 = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            v2.vibrate(34);
             vibrateDevice();
             signIn();
         });
+        themeChooser = findViewById(R.id.themeChoose);
+        themeChooser.setOnClickListener(v -> {
+            vibrateDevice();
+            CreateAlertDialogWithRadioButtonGroup();
+        });
+    }
+
+    public void CreateAlertDialogWithRadioButtonGroup() {
+        LottieAnimationView lottieAnimationView;
+        lottieAnimationView = findViewById(R.id.animation_view_theme);
+        FadingTextView fadingTextView;
+        fadingTextView = findViewById(R.id.first_hello);
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUp.this);
+        builder.setTitle("Choose Theme for Bhojan");
+        builder.setMessage("You can always change it later inside the app!");
+        builder.setPositiveButton("Light", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        vibrateDevice();
+                        signInButton.setVisibility(View.INVISIBLE);
+                        fadingTextView.setVisibility(View.INVISIBLE);
+                        fadingTextView.pause();
+                        lottieAnimationView.setVisibility(View.VISIBLE);
+                        lottieAnimationView.setAnimation("light_mode.json");
+                        lottieAnimationView.playAnimation();
+                        alertDialog1.dismiss();
+                        int theme_timeout = 2000;
+                        new Handler().postDelayed(() -> {
+                            lottieAnimationView.cancelAnimation();
+                            lottieAnimationView.setVisibility(View.GONE);
+                            signInButton.setVisibility(View.VISIBLE);
+                            fadingTextView.resume();
+                            fadingTextView.setVisibility(View.VISIBLE);
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        }, theme_timeout);
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        Toast.makeText(getApplicationContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
+                        alertDialog1.dismiss();
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Dark", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        Toast.makeText(getApplicationContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
+                        alertDialog1.dismiss();
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        vibrateDevice();
+                        signInButton.setVisibility(View.INVISIBLE);
+                        fadingTextView.pause();
+                        fadingTextView.setVisibility(View.INVISIBLE);
+                        lottieAnimationView.setVisibility(View.VISIBLE);
+                        lottieAnimationView.setAnimation("dark_mode.json");
+                        lottieAnimationView.playAnimation();
+                        alertDialog1.dismiss();
+                        int theme_timeout = 2000;
+                        new Handler().postDelayed(() -> {
+                            lottieAnimationView.cancelAnimation();
+                            lottieAnimationView.setVisibility(View.GONE);
+                            fadingTextView.resume();
+                            signInButton.setVisibility(View.VISIBLE);
+                            fadingTextView.setVisibility(View.VISIBLE);
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        }, theme_timeout);
+                        break;
+                    default:
+                        Toast.makeText(getApplicationContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.setNeutralButton("System Default", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    vibrateDevice();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                    alertDialog1.dismiss();
+                }
+            });
+        }
+        alertDialog1 = builder.create();
+        alertDialog1.show();
+
     }
 
     private void signIn() {

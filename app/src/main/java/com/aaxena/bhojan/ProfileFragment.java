@@ -2,7 +2,9 @@ package com.aaxena.bhojan;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,8 +21,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.avaris.flyfood.Menu;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,6 +35,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
+import com.tomer.fadingtextview.FadingTextView;
 
 
 public class ProfileFragment extends Fragment {
@@ -38,7 +44,8 @@ public class ProfileFragment extends Fragment {
     TextView username;
     TextView email;
     FirebaseAuth mAuth;
-    Button signOut,aboutDevs;
+    Button signOut,aboutDevs,themeSwitcher;
+    AlertDialog alertDialog1;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -58,6 +65,11 @@ public class ProfileFragment extends Fragment {
             startActivity(toAbtDevs);
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             getActivity().finish();
+        });
+        themeSwitcher = v.findViewById(R.id.themeFromProfile);
+        themeSwitcher.setOnClickListener(v12 -> {
+            vibrateDevice();
+            CreateAlertDialogWithRadioButtonGroup();
         });
         FirebaseUser mUser = mAuth.getCurrentUser();
         photo.setOnClickListener(new DoubleClick(new DoubleClickListener() {
@@ -124,5 +136,58 @@ public class ProfileFragment extends Fragment {
             //deprecated in API 26
             vibrator.vibrate(25);
         }
+    }
+    public void CreateAlertDialogWithRadioButtonGroup() {
+        int nightModeFlags =
+                this.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Choose Theme for Bhojan");
+        builder.setPositiveButton("Light", (dialog, which) -> {
+            switch (nightModeFlags) {
+                case Configuration.UI_MODE_NIGHT_YES:
+                    vibrateDevice();
+                    alertDialog1.dismiss();
+                    int theme_timeout = 2000;
+                    new Handler().postDelayed(() -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }, theme_timeout);
+                    break;
+                case Configuration.UI_MODE_NIGHT_NO:
+                    Toast.makeText(getContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
+                    alertDialog1.dismiss();
+                    break;
+                default:
+                    Toast.makeText(getContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Dark", (dialog, which) -> {
+            switch (nightModeFlags) {
+                case Configuration.UI_MODE_NIGHT_YES:
+                    Toast.makeText(getContext(),"Already in Dark Mode \uD83C\uDF19",Toast.LENGTH_SHORT).show();
+                    alertDialog1.dismiss();
+                    break;
+                case Configuration.UI_MODE_NIGHT_NO:
+                    vibrateDevice();
+                    alertDialog1.dismiss();
+                    int theme_timeout = 2000;
+                    new Handler().postDelayed(() -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }, theme_timeout);
+                    break;
+                default:
+                    Toast.makeText(getContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.setNeutralButton("System Default", (dialog, which) -> {
+                vibrateDevice();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                alertDialog1.dismiss();
+            });
+        }
+        alertDialog1 = builder.create();
+        alertDialog1.show();
+
     }
 }
