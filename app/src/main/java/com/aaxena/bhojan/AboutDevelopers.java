@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avaris.flyfood.Menu;
+
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
@@ -75,15 +77,32 @@ public class AboutDevelopers extends AppCompatActivity {
             TextView mTextView = convertView.findViewById(R.id.nameDev1);
             mTextView.setText(names[position]);
             mImageView.setImageResource(images[position]);
-            mButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    CustomTabsIntent.Builder customIntent = new CustomTabsIntent.Builder();
-                    customIntent.setToolbarColor(ContextCompat.getColor(AboutDevelopers.this, R.color.orange_500));
-                    openCustomTab(AboutDevelopers.this, customIntent.build(), Uri.parse(urls[position]));
-                }
+            mButton.setOnClickListener(v -> {
+                CustomTabsIntent.Builder customIntent = new CustomTabsIntent.Builder();
+                customIntent.setToolbarColor(ContextCompat.getColor(AboutDevelopers.this, R.color.orange_500));
+                openCustomTab(AboutDevelopers.this, customIntent.build(), Uri.parse(urls[position]));
             });
             return convertView;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent back = new Intent(this, Landing.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        startActivity(back);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Write code here
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Write code here
     }
 }
