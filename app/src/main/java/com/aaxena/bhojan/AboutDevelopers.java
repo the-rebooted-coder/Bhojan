@@ -66,8 +66,8 @@ public class AboutDevelopers extends AppCompatActivity {
 
         @Override
         public View getView(int position, @Nullable View convertView, @NotNull ViewGroup parent) {
-            mButton = findViewById(R.id.devMore);
             convertView = getLayoutInflater().inflate(R.layout.devlist, parent, false);
+            Button mButton = convertView.findViewById(R.id.devMore);
             ImageView mImageView = convertView.findViewById(R.id.imgDev1);
             TextView mTextView = convertView.findViewById(R.id.nameDev1);
             mTextView.setText(names[position]);
