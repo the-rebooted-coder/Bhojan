@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment {
             Intent toAbtDevs = new Intent(getContext(),AboutDevelopers.class);
             startActivity(toAbtDevs);
             getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            getActivity().finish();
         });
         FirebaseUser mUser = mAuth.getCurrentUser();
         photo.setOnClickListener(new DoubleClick(new DoubleClickListener() {
