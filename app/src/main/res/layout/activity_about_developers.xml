@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutDevelopers"
-    android:background="@color/cyan">
+    android:background="@color/white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,13 +19,12 @@
 
     <ListView
         android:id="@+id/devList"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:scrollbars="none"
         android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:divider="@color/transperent"
         android:dividerHeight="13dp"/>
-
-
-
 
 </RelativeLayout>
