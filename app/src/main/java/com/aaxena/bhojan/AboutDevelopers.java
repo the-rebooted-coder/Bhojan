@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
@@ -31,6 +32,8 @@ public class AboutDevelopers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_developers);
+
+        Toast.makeText(this,"Tap on our PFPs ;)",Toast.LENGTH_SHORT).show();
 
         mListView = findViewById(R.id.devList);
         devAdapter adapter = new devAdapter();
