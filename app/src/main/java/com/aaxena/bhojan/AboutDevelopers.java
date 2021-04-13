@@ -92,6 +92,7 @@ public class AboutDevelopers extends AppCompatActivity {
         Intent back = new Intent(this, Landing.class);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(back);
+        finish();
     }
 
     @Override

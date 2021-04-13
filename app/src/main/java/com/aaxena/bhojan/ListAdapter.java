@@ -23,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.joooonho.SelectableRoundedImageView;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
@@ -50,7 +51,7 @@ public class ListAdapter extends ArrayAdapter {
         TextView foodName = listItemView.findViewById(R.id.foodName);
         TextView foodDescription = listItemView.findViewById(R.id.foodDescription);
         TextView foodSuggestions = listItemView.findViewById(R.id.foodSuggestions);
-        ImageView foodImage = listItemView.findViewById(R.id.imageLoader);
+        SelectableRoundedImageView foodImage = listItemView.findViewById(R.id.imageLoader);
         TextView scrollingText = listItemView.findViewById(R.id.address);
         Food food = foodList.get(position);
         String url = food.getImageUrl();
@@ -59,6 +60,7 @@ public class ListAdapter extends ArrayAdapter {
         Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
         foodName.setText(food.getFood());
         foodDescription.setText(food.getDescription());
+        foodSuggestions.setSelected(true);
         double latitude = Double.parseDouble(lat);
         double longitude = Double.parseDouble(lon);
         try {

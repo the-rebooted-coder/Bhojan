@@ -1,5 +1,6 @@
 package com.aaxena.bhojan;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -7,21 +8,27 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Pair;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class SplashScreen extends AppCompatActivity {
     protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        relativeLayout = findViewById(R.id.splashScreenLayout);
         TextView appName = findViewById(R.id.title);
         one();
         fireSplashScreen();
@@ -77,9 +84,15 @@ public class SplashScreen extends AppCompatActivity {
         if (account != null) {
             //User Signed In, Proceeding to Landing
             Intent i = new Intent(SplashScreen.this, Landing.class);
-            startActivity(i);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            Pair [] pairs = new Pair[1];
+            TextView appName = findViewById(R.id.title);
+            pairs[0] = new Pair<View, String> (appName,"imageTransition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,pairs);
+            startActivity(i,options.toBundle());
+            int splash_screen_time_out = 1000;
+            new Handler().postDelayed(() -> {
+                finish();
+            }, splash_screen_time_out);
         } else {
             //Newbie
             Intent i = new Intent(SplashScreen.this, SignUp.class);
