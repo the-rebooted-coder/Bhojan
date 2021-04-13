@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sign_up"
+    android:background="@drawable/sign_up_dark"
     tools:context=".SignUp">
 
     <com.tomer.fadingtextview.FadingTextView
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="34sp" />
 
     <com.airbnb.lottie.LottieAnimationView

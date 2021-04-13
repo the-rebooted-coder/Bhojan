@@ -14,7 +14,7 @@
     <string name="suggestions">Any Suggestions for the Food?</string>
     <string name="share_food">Share Food</string>
     <string name="image_to_be_uploaded">Image to be uploaded</string>
-    <string name="tips">Hmm…there is no internet right now, but food might be\nDo share it if excess!</string>
+    <string name="tips">Hmm…there is no internet right now, but food might be.\nDo share it if excess!</string>
     <string name="sign_out">Sign Out</string>
     <string name="about_developers">About Developers</string>
     <string-array name="greetings">
@@ -50,4 +50,5 @@
     <string name="menu_high_score">0</string>
     <string name="fullTime">90</string>
     <string name="TimerTitle">Time:</string>
+    <string name="about_developers">About Developers</string>
 </resources>

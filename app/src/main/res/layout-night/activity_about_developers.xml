@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutDevelopers"
-    android:background="@color/white">
+    android:background="@color/black">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:fontFamily="@font/productsans"
+        android:fontFamily="@font/productsansbold"
         android:text="@string/about_developers"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"/>
 
     <ListView
         android:id="@+id/devList"
