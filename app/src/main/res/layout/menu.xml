@@ -48,19 +48,21 @@
         app:layout_constraintTop_toBottomOf="@+id/bStart"
         app:layout_constraintWidth_percent="@dimen/menu_btn_width" />
 
-    <ImageView
-            android:id="@+id/Menu_Title"
-            android:src="@drawable/logo_last"
-            android:contentDescription="@string/Menu_Title"
-            android:layout_height="@dimen/Zero_dp"
-            android:layout_width="@dimen/Zero_dp"
-            app:layout_constraintHeight_percent="0.30"
-            app:layout_constraintWidth_percent="0.885"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.005" android:layout_marginTop="8dp"/>
 
+    <ImageView
+        android:id="@+id/Menu_Title"
+        android:layout_width="@dimen/Zero_dp"
+        android:layout_height="@dimen/Zero_dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/Menu_Title"
+        android:src="@drawable/logo_last"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.30"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.006"
+        app:layout_constraintWidth_percent="0.885" />
 
     <TextView
             android:text="@string/menu_high_score"

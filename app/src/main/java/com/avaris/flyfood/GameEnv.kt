@@ -7,13 +7,12 @@ import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.aaxena.bhojan.R
 import kotlinx.android.synthetic.main.game_env.*
-
 
 
 class GameEnv : AppCompatActivity() {

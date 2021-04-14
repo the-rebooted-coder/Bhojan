@@ -43,6 +43,7 @@
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
+        android:scrollbars="none"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent"
         android:dividerHeight="15.0sp"

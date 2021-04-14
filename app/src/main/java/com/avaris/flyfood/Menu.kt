@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.aaxena.bhojan.R
 import kotlinx.android.synthetic.main.menu.*
-
 
 
 class Menu : AppCompatActivity() {

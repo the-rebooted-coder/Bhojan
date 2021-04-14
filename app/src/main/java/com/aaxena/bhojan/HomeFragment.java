@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     LottieAnimationView lottieAnimationView, lottieAnimationView2;
-
+    DatabaseReference foodDbAdd = FirebaseDatabase.getInstance().getReference("Food/Food");
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
@@ -47,14 +48,12 @@ public class HomeFragment extends Fragment {
         if (haveNetwork()) {
             ListView myListView;
             List<Food> foodList;
-            DatabaseReference foodDbAdd = FirebaseDatabase.getInstance().getReference("Food/Food");
             myListView = v3.findViewById(R.id.myListView);
             foodList = new ArrayList<>();
             foodDbAdd.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    lottieAnimationView.setVisibility(View.GONE);
-                    lottieAnimationView2.setVisibility(View.GONE);
+                    myListView.setVisibility(View.INVISIBLE);
                     try {
                         foodList.clear();
                         for (DataSnapshot foodDatastamp : snapshot.getChildren()) {
@@ -70,6 +69,12 @@ public class HomeFragment extends Fragment {
                     } catch (Exception e) {
                         //DO NOT REMOVE THIS EMPTY CATCH
                     }
+                    int splash_screen_time_out = 1500;
+                    new Handler().postDelayed(() -> {
+                        lottieAnimationView.setVisibility(View.GONE);
+                        lottieAnimationView2.setVisibility(View.GONE);
+                        myListView.setVisibility(View.VISIBLE);
+                    }, splash_screen_time_out);
                 }
 
                 @Override

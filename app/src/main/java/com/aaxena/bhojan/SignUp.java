@@ -3,6 +3,7 @@ package com.aaxena.bhojan;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,9 +13,7 @@ import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -43,7 +42,7 @@ public class SignUp extends AppCompatActivity {
     LottieAnimationView food_load;
     AlertDialog alertDialog1;
     private final int RC_SIGN_IN = 1;
-    CharSequence[] values = {" Light "," Dark "," System Default "};
+    public static final String UI_MODE = "uiMode";
     Button themeChooser;
 
     @Override
@@ -101,6 +100,9 @@ public class SignUp extends AppCompatActivity {
                             fadingTextView.resume();
                             fadingTextView.setVisibility(View.VISIBLE);
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Light");
+                            editor.apply();
                         }, theme_timeout);
                         break;
                     case Configuration.UI_MODE_NIGHT_NO:
@@ -137,6 +139,9 @@ public class SignUp extends AppCompatActivity {
                             signInButton.setVisibility(View.VISIBLE);
                             fadingTextView.setVisibility(View.VISIBLE);
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                            editor.putString("uiMode","Dark");
+                            editor.apply();
                         }, theme_timeout);
                         break;
                     default:
@@ -150,6 +155,9 @@ public class SignUp extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     vibrateDevice();
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                    SharedPreferences.Editor editor = getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                    editor.putString("uiMode","System");
+                    editor.apply();
                     alertDialog1.dismiss();
                 }
             });

@@ -2,8 +2,8 @@ package com.aaxena.bhojan;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
@@ -25,7 +25,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.avaris.flyfood.Menu;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -35,7 +34,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
-import com.tomer.fadingtextview.FadingTextView;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class ProfileFragment extends Fragment {
@@ -46,6 +46,8 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth mAuth;
     Button signOut,aboutDevs,themeSwitcher;
     AlertDialog alertDialog1;
+    String name;
+    public static final String UI_MODE = "uiMode";
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -148,10 +150,11 @@ public class ProfileFragment extends Fragment {
                 case Configuration.UI_MODE_NIGHT_YES:
                     vibrateDevice();
                     alertDialog1.dismiss();
-                    int theme_timeout = 2000;
-                    new Handler().postDelayed(() -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    }, theme_timeout);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    Toast.makeText(getContext(),"Switched to Light Mode️ ☀",Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                    editor.putString("uiMode","Light");
+                    editor.apply();
                     break;
                 case Configuration.UI_MODE_NIGHT_NO:
                     Toast.makeText(getContext(),"Already in Light Mode ☀️",Toast.LENGTH_SHORT).show();
@@ -170,10 +173,11 @@ public class ProfileFragment extends Fragment {
                 case Configuration.UI_MODE_NIGHT_NO:
                     vibrateDevice();
                     alertDialog1.dismiss();
-                    int theme_timeout = 2000;
-                    new Handler().postDelayed(() -> {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    }, theme_timeout);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    Toast.makeText(getContext(),"Switched to Dark Mode \uD83C\uDF19️",Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                    editor.putString("uiMode","Dark");
+                    editor.apply();
                     break;
                 default:
                     Toast.makeText(getContext(),"Choose a theme",Toast.LENGTH_SHORT).show();
@@ -183,6 +187,10 @@ public class ProfileFragment extends Fragment {
             builder.setNeutralButton("System Default", (dialog, which) -> {
                 vibrateDevice();
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                Toast.makeText(getContext(),"Switched to System Default️ \uD83C\uDF17",Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences(UI_MODE, MODE_PRIVATE).edit();
+                editor.putString("uiMode","System");
+                editor.apply();
                 alertDialog1.dismiss();
             });
         }

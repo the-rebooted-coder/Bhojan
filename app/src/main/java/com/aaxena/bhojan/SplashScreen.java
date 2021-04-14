@@ -3,6 +3,7 @@ package com.aaxena.bhojan;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -22,18 +24,35 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 public class SplashScreen extends AppCompatActivity {
     protected AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
     private RelativeLayout relativeLayout;
+    String name;
+    public static final String UI_MODE = "uiMode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences(UI_MODE, MODE_PRIVATE);
+        name = prefs.getString("uiMode", "System");
+        applyUI();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         relativeLayout = findViewById(R.id.splashScreenLayout);
         TextView appName = findViewById(R.id.title);
         one();
-        fireSplashScreen();
         appName.setText(R.string.app_name_extended);
         appName.startAnimation(fadeIn);
+        fireSplashScreen();
         fadeIn.setDuration(1200);
+    }
+
+    private void applyUI() {
+        if (name.equals("Dark")){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else if (name.equals("Light")){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
     }
 
     private void one() {

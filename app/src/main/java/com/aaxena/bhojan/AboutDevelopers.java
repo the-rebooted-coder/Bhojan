@@ -1,10 +1,5 @@
 package com.aaxena.bhojan;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,10 +13,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.avaris.flyfood.Menu;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
 
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 public class AboutDevelopers extends AppCompatActivity {
 

@@ -8,6 +8,7 @@
     android:background="@color/black">
 
     <TextView
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -23,7 +24,8 @@
         android:scrollbars="none"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/heading"
+        android:layout_marginTop="20dp"
         android:divider="@color/transperent"
         android:dividerHeight="13dp"/>
 

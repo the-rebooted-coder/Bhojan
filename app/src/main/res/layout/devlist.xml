@@ -11,23 +11,26 @@
 
         <Button
             android:id="@+id/devMore"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
+            android:layout_centerHorizontal="true"
             android:layout_height="350dp"
             android:background="@color/transperent"
             android:onClick="Clicked" />
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="350dp"
+            android:layout_centerHorizontal="true"
             android:scaleType="centerCrop"
             android:id="@+id/imgDev1"/>
         <TextView
             android:id="@+id/nameDev1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test_1"
+            android:text="Dev_1"
             android:textSize="20sp"
             android:textAlignment="center"
             android:background="@color/orange_700"
+            android:layout_marginTop="5dp"
             android:padding="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/productsans"

@@ -3,10 +3,10 @@ package com.avaris.flyfood
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import com.aaxena.bhojan.R
 import kotlinx.android.synthetic.main.game_over.*
 

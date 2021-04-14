@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.avaris.flyfood.Menu">
+
+    <Button
+        android:id="@+id/bStart"
+        android:text="@string/button_START"
+        android:textSize="@dimen/menu_b_text_size"
+        android:fontFamily="@font/productsansbold"
+        android:textStyle="bold"
+        android:textColor="@color/White"
+        android:textAllCaps="false"
+        android:background="@drawable/menu_b"
+        android:layout_height="@dimen/Zero_dp"
+        android:layout_width="@dimen/Zero_dp"
+        app:layout_constraintHeight_percent="@dimen/menu_btn_height"
+        app:layout_constraintWidth_percent="@dimen/menu_btn_width"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bQuit" app:layout_constraintTop_toTopOf="@+id/guideline2"/>
+
+    <Button
+        android:id="@+id/bQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/productsansbold"
+        android:background="@color/transperent"
+        android:text="@string/button_Quit"
+        android:textAllCaps="false"
+        android:textColor="@color/orange_700"
+        android:textSize="@dimen/menu_b_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="@dimen/menu_btn_height"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bStart"
+        app:layout_constraintWidth_percent="@dimen/menu_btn_width" />
+
+    <ImageView
+        android:id="@+id/Menu_Title"
+        android:layout_width="@dimen/Zero_dp"
+        android:layout_height="@dimen/Zero_dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/Menu_Title"
+        android:src="@drawable/logo_last"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.30"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.006"
+        app:layout_constraintWidth_percent="0.885" />
+
+
+    <TextView
+        android:text="@string/menu_high_score"
+        app:fontFamily="@font/productsansbold"
+        android:textSize="52sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/highScore"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Title" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2" app:layout_constraintVertical_bias="0.79"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/guideline"
+        app:layout_constraintGuide_percent="0.88"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/guideline2"
+        app:layout_constraintGuide_percent="0.56"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/guideline3"
+        app:layout_constraintGuide_percent="0.08"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
