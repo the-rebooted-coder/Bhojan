@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PrivacyPolicy">
+
+    <TextView
+        android:id="@+id/privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:transitionName="imageTransition"
+        android:fontFamily="@font/productsansbold"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/privacy_policy_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsansbold"
+        android:textSize="22sp"
+        android:layout_below="@+id/privacy_policy"
+        android:textColor="@color/black"
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/privacy_policy" />
+
+    <ScrollView
+        android:id="@+id/mainPolicy"
+        android:layout_width="290dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:elevation="50dp"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/productsans"
+        android:textAlignment="center"
+        android:text="@string/privacy_policy_text"/>
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goAhead"
+        android:layout_width="wrap_content"
+        android:elevation="30dp"
+        app:rippleColor="@color/offwhite"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default"
+        android:layout_below="@+id/mainPolicy"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/goAhead"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/productsansitalic"
+        android:text="@string/by_tapping_continue_you_agree_to_the_terms_and_conditions_laid_down_by_bhojan"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/goAhead"
+        android:textSize="12sp"/>
+
+
+</RelativeLayout>
