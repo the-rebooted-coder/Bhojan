@@ -14,7 +14,7 @@
         android:fontFamily="@font/productsansbold"
         android:textSize="26sp"
         android:textColor="@color/black"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:text="@string/app_name" />
 
@@ -26,7 +26,7 @@
         android:textSize="22sp"
         android:layout_below="@+id/privacy_policy"
         android:textColor="@color/black"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
         android:text="@string/privacy_policy" />
 
@@ -34,7 +34,9 @@
         android:id="@+id/mainPolicy"
         android:layout_width="290dp"
         android:layout_height="400dp"
-        android:layout_centerInParent="true">
+        android:layout_below="@id/privacy_policy_header"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -42,6 +44,11 @@
         android:layout_width="match_parent"
         android:elevation="50dp"
         android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@drawable/textview"
         android:fontFamily="@font/productsans"
         android:textAlignment="center"
         android:text="@string/privacy_policy_text"/>
@@ -59,14 +66,13 @@
         android:layout_centerHorizontal="true"
         android:text="@string/goAhead"/>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/productsansitalic"
         android:text="@string/by_tapping_continue_you_agree_to_the_terms_and_conditions_laid_down_by_bhojan"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/goAhead"
+        android:layout_alignParentBottom="true"
         android:textSize="12sp"/>
 
 

@@ -113,10 +113,16 @@ public class SplashScreen extends AppCompatActivity {
             }, splash_screen_time_out);
         } else {
             //Newbie
-            Intent i = new Intent(SplashScreen.this, SignUp.class);
-            startActivity(i);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            Intent i = new Intent(SplashScreen.this, PrivacyPolicy.class);
+            Pair [] pairs = new Pair[1];
+            TextView appName = findViewById(R.id.title);
+            pairs[0] = new Pair<View, String> (appName,"imageTransition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,pairs);
+            startActivity(i,options.toBundle());
+            int splash_screen_time_out = 1000;
+            new Handler().postDelayed(() -> {
+                finish();
+            }, splash_screen_time_out);
         }
     }
 
