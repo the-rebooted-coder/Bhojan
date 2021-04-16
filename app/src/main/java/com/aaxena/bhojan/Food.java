@@ -1,13 +1,13 @@
 package com.aaxena.bhojan;
 
 public class Food {
-    String food;
-    String description;
-    String suggestions;
-    String key;
-    String imageUrl;
-    String latitude;
-    String longitude;
+    private String food;
+    private String description;
+    private String suggestions;
+    private String key;
+    private String imageUrl;
+    private String latitude;
+    private String longitude;
 
     public Food() {
     }

@@ -100,7 +100,7 @@ public class ShareFragment extends Fragment {
             }
             catch (NullPointerException nullPointerException)
             {
-             //
+                //
             }
             if (food.isEmpty()){
                 ScrollView nestedScrollView = v2.findViewById(R.id.scrollViewHere);
@@ -125,7 +125,7 @@ public class ShareFragment extends Fragment {
                 handler.postDelayed(() -> vibrateDevice(), 100);
                 vibrateDeviceThird();
                 suggestion.setError("Please provide atleast one line suggestion :)");
-             }
+            }
             else if (filePath != null){
                 if (checkPermissions()) {
                     vibrateDevice();
@@ -193,8 +193,8 @@ public class ShareFragment extends Fragment {
                     } else {
                         lon = location.getLongitude();
                         lat = location.getLatitude();
-                      //  latitudeTextView.setText(location.getLatitude() + "");
-                      //  longitTextView.setText(location.getLongitude() + "");
+                        //  latitudeTextView.setText(location.getLatitude() + "");
+                        //  longitTextView.setText(location.getLongitude() + "");
                     }
                 });
             } else {

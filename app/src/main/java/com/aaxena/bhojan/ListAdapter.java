@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,8 +68,8 @@ public class ListAdapter extends ArrayAdapter {
             String cityName = addresses.get(0).getAddressLine(0);
             String stateName = addresses.get(0).getAddressLine(1);
             try{
-                    scrollingText.setText(cityName+stateName);
-                    scrollingText.setSelected(true);
+                scrollingText.setText(cityName+stateName);
+                scrollingText.setSelected(true);
             }
             catch (Exception e){
                 //Couldn't fetch location
@@ -80,8 +81,8 @@ public class ListAdapter extends ArrayAdapter {
         moreDetails.setOnClickListener(new DoubleClick(new DoubleClickListener() {
             @Override
             public void onSingleClick(View view) {
-               vibrateDeviceSecond();
-               Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
+                vibrateDeviceSecond();
+                Toast.makeText(getContext(),"Tap twice to view "+food.getFood()+" on map! \uD83D\uDDFA️",Toast.LENGTH_SHORT).show();
             }
 
             @Override
