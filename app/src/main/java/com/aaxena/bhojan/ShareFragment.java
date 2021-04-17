@@ -22,12 +22,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -40,10 +44,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
@@ -66,6 +73,8 @@ public class ShareFragment extends Fragment {
     String longitude;
     String latitude;
     int PERMISSION_ID = 44;
+    AlertDialog.Builder builder;
+    AlertDialog progressDialog;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -73,7 +82,7 @@ public class ShareFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v2 = inflater.inflate(R.layout.fragment_share, container, false);
-
+        progressDialog = getDialogProgressBar().create();
         //Location and geo
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         // method to get the location
@@ -141,27 +150,30 @@ public class ShareFragment extends Fragment {
                                     "foodImages/"
                                             + filePath.getLastPathSegment());
                     ref.putFile(filePath)
+                            .addOnProgressListener(snapshot -> {
+                                progressDialog.setCancelable(false);
+                                progressDialog.show();
+
+                            })
                             .addOnSuccessListener(
                                     taskSnapshot -> {
                                         Task<Uri> downloadUrl = ref.getDownloadUrl();
-                                        downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                String imageReference = uri.toString();
-                                                foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
-                                                food1.setImageUrl(imageReference);
-                                            }
+                                        downloadUrl.addOnSuccessListener(uri -> {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(getActivity().getApplicationContext(), "Food Details Shared Successfully!", Toast.LENGTH_SHORT).show();
+                                            final Handler handler = new Handler();
+                                            handler.postDelayed(() -> vibrateDeviceThird(), 100);
+                                            final Handler handler2 = new Handler();
+                                            handler2.postDelayed(() -> vibrateDevice(), 300);
+                                            String imageReference = uri.toString();
+                                            foodDbAdd.child("Food").child(food1.getKey()).child("imageUrl").setValue(imageReference);
+                                            food1.setImageUrl(imageReference);
                                         });
                                     })
                             .addOnFailureListener(e -> Toast.makeText(getActivity().getApplicationContext(),
                                     "Image Upload Failed " + e.getMessage(),
                                     Toast.LENGTH_SHORT)
                                     .show());
-                    Toast.makeText(getActivity().getApplicationContext(), "Food Details Shared Successfully!", Toast.LENGTH_SHORT).show();
-                    final Handler handler = new Handler();
-                    handler.postDelayed(() -> vibrateDeviceThird(), 100);
-                    final Handler handler2 = new Handler();
-                    handler2.postDelayed(() -> vibrateDevice(), 300);
                 }
                 else {
                     vibrateDeviceThird();
@@ -176,6 +188,21 @@ public class ShareFragment extends Fragment {
             }
         });
         return v2;
+    }
+    public AlertDialog.Builder getDialogProgressBar() {
+
+        if (builder == null) {
+            builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Sharing Food ✨\n");
+            builder.setMessage("Please Wait!");
+            final ProgressBar progressBar = new ProgressBar(getContext());
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            progressBar.setLayoutParams(lp);
+            builder.setView(progressBar);
+        }
+        return builder;
     }
     @SuppressLint("MissingPermission")
     private void getLastLocation() {
